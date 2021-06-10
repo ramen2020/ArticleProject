@@ -92,6 +92,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="searchTextField" destination="Ooc-bQ-P8g" id="YgC-8M-DCM"/>
                         <outlet property="table" destination="beC-sU-AWO" id="hoD-Bi-IqT"/>
                     </connections>
                 </viewController>

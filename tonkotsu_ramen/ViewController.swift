@@ -10,9 +10,11 @@ import Moya
 import Kingfisher
 
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
     @IBOutlet var table: UITableView!
+    
+    @IBOutlet weak var searchTextField: UITextField!
     
     var articles = [Article]()
     
@@ -20,6 +22,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.featchQiitaArticles();
         table.delegate = self
         table.dataSource = self
+        searchTextField.delegate = self
+    }
+    
+    private func search() {
+        searchTextField.delegate = self
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -63,6 +71,37 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
         }
     }
+    
+    // 記事検索
+    func featchQiitaArticlesBySearchWord(searchWord: String) -> Void {
+        let provider = MoyaProvider<QiitaAPI>()
+
+        provider.request(.search(searchWord: searchWord)) { result in
+            switch result {
+            case let .success(response):
+                do{
+                    let decoder = JSONDecoder()
+                    self.articles = try decoder.decode([Article].self, from: response.data)
+                } catch {
+                    print("decodeでエラー:\(error)")
+                }
+                
+                self.table.reloadData()
+
+            case let .failure(error):
+                print("リクエストでエラー:\(error)")
+            }
+
+        }
+    }
+    
+    // textFieldでenterキー押した時
+    func textFieldShouldReturn(_ serchTextField: UITextField) -> Bool {
+        let searchWord = serchTextField.text!
+        self.featchQiitaArticlesBySearchWord(searchWord: searchWord);
+        return true;
+    }
+    
 }
 
 

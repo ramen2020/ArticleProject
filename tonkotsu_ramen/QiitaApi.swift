@@ -10,16 +10,16 @@ import Moya
 
 enum QiitaAPI {
     case swift
-    case laravel
+    case search(searchWord: String)
 }
 
 extension QiitaAPI: TargetType {
     var baseURL: URL {
-        return URL(string: "https://qiita.com/api/v2/items")!
+        return URL(string: "https://qiita.com")!
     }
 
     var path: String {
-        return ""
+        return "/api/v2/items"
     }
 
     var method: Moya.Method {
@@ -39,7 +39,12 @@ extension QiitaAPI: TargetType {
     }
 
     var task: Task {
-        return .requestPlain
+        switch self {
+        case .swift:
+            return .requestParameters(parameters: ["query": "swift"], encoding: URLEncoding.queryString )
+        case let .search(_: searchWord):
+            return .requestParameters(parameters: ["query": searchWord], encoding: URLEncoding.queryString )
+        }
     }
 
     var headers: [String : String]? {
