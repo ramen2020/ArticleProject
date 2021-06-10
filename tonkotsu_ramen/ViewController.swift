@@ -25,11 +25,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         searchTextField.delegate = self
     }
     
-    private func search() {
-        searchTextField.delegate = self
-        
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.articles.count
     }
@@ -50,10 +45,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return cell
     }
 
-    func featchQiitaArticles(){
+    // 記事一覧取得
+    func featchQiitaArticles() -> Void {
         let provider = MoyaProvider<QiitaAPI>()
-
-        provider.request(.swift) { result in
+        provider.request(.all) { result in
             switch result {
             case let .success(response):
                 do{
