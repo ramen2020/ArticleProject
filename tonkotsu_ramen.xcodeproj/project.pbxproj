@@ -1,0 +1,760 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3D1EF8A77D7AB641A0F1F84C /* Pods_tonkotsu_ramenTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A91F55FC3F2A0785F45E8E1 /* Pods_tonkotsu_ramenTests.framework */; };
+		668C30C026719E50002FD8AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668C30BF26719E50002FD8AD /* AppDelegate.swift */; };
+		668C30C226719E50002FD8AD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668C30C126719E50002FD8AD /* SceneDelegate.swift */; };
+		668C30C426719E50002FD8AD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668C30C326719E50002FD8AD /* ViewController.swift */; };
+		668C30C726719E50002FD8AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 668C30C526719E50002FD8AD /* Main.storyboard */; };
+		668C30C926719E52002FD8AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 668C30C826719E52002FD8AD /* Assets.xcassets */; };
+		668C30CC26719E52002FD8AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 668C30CA26719E52002FD8AD /* LaunchScreen.storyboard */; };
+		668C30D726719E52002FD8AD /* tonkotsu_ramenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668C30D626719E52002FD8AD /* tonkotsu_ramenTests.swift */; };
+		668C30E226719E52002FD8AD /* tonkotsu_ramenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668C30E126719E52002FD8AD /* tonkotsu_ramenUITests.swift */; };
+		668C30F02671A3DF002FD8AD /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668C30EF2671A3DF002FD8AD /* Article.swift */; };
+		668C30F22671A537002FD8AD /* QiitaApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668C30F12671A537002FD8AD /* QiitaApi.swift */; };
+		9AE4058E1F343D2AD16539FC /* Pods_tonkotsu_ramen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAFD36EF1CF90AFFA135DF00 /* Pods_tonkotsu_ramen.framework */; };
+		9C670FFC5CEE0A4F6E53DCA8 /* Pods_tonkotsu_ramen_tonkotsu_ramenUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A18CA70E68C451EB568941 /* Pods_tonkotsu_ramen_tonkotsu_ramenUITests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		668C30D326719E52002FD8AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 668C30B426719E50002FD8AD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 668C30BB26719E50002FD8AD;
+			remoteInfo = tonkotsu_ramen;
+		};
+		668C30DE26719E52002FD8AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 668C30B426719E50002FD8AD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 668C30BB26719E50002FD8AD;
+			remoteInfo = tonkotsu_ramen;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		04A18CA70E68C451EB568941 /* Pods_tonkotsu_ramen_tonkotsu_ramenUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tonkotsu_ramen_tonkotsu_ramenUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		05F8C614189598025DD205BE /* Pods-tonkotsu_ramen-tonkotsu_ramenUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tonkotsu_ramen-tonkotsu_ramenUITests.debug.xcconfig"; path = "Target Support Files/Pods-tonkotsu_ramen-tonkotsu_ramenUITests/Pods-tonkotsu_ramen-tonkotsu_ramenUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		667914CACC882458ED599277 /* Pods-tonkotsu_ramenTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tonkotsu_ramenTests.release.xcconfig"; path = "Target Support Files/Pods-tonkotsu_ramenTests/Pods-tonkotsu_ramenTests.release.xcconfig"; sourceTree = "<group>"; };
+		668C30BC26719E50002FD8AD /* tonkotsu_ramen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tonkotsu_ramen.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		668C30BF26719E50002FD8AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		668C30C126719E50002FD8AD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		668C30C326719E50002FD8AD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		668C30C626719E50002FD8AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		668C30C826719E52002FD8AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		668C30CB26719E52002FD8AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		668C30CD26719E52002FD8AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		668C30D226719E52002FD8AD /* tonkotsu_ramenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tonkotsu_ramenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		668C30D626719E52002FD8AD /* tonkotsu_ramenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tonkotsu_ramenTests.swift; sourceTree = "<group>"; };
+		668C30D826719E52002FD8AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		668C30DD26719E52002FD8AD /* tonkotsu_ramenUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tonkotsu_ramenUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		668C30E126719E52002FD8AD /* tonkotsu_ramenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tonkotsu_ramenUITests.swift; sourceTree = "<group>"; };
+		668C30E326719E52002FD8AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		668C30EF2671A3DF002FD8AD /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		668C30F12671A537002FD8AD /* QiitaApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaApi.swift; sourceTree = "<group>"; };
+		7755F99191303681329E969D /* Pods-tonkotsu_ramen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tonkotsu_ramen.release.xcconfig"; path = "Target Support Files/Pods-tonkotsu_ramen/Pods-tonkotsu_ramen.release.xcconfig"; sourceTree = "<group>"; };
+		7A91F55FC3F2A0785F45E8E1 /* Pods_tonkotsu_ramenTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tonkotsu_ramenTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0A0A4861D41EDFE156815E7 /* Pods-tonkotsu_ramen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tonkotsu_ramen.debug.xcconfig"; path = "Target Support Files/Pods-tonkotsu_ramen/Pods-tonkotsu_ramen.debug.xcconfig"; sourceTree = "<group>"; };
+		B3A7DA406C34D9A6C8AF187E /* Pods-tonkotsu_ramenTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tonkotsu_ramenTests.debug.xcconfig"; path = "Target Support Files/Pods-tonkotsu_ramenTests/Pods-tonkotsu_ramenTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B44BBD323E4398EDF1F1360F /* Pods-tonkotsu_ramen-tonkotsu_ramenUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tonkotsu_ramen-tonkotsu_ramenUITests.release.xcconfig"; path = "Target Support Files/Pods-tonkotsu_ramen-tonkotsu_ramenUITests/Pods-tonkotsu_ramen-tonkotsu_ramenUITests.release.xcconfig"; sourceTree = "<group>"; };
+		EAFD36EF1CF90AFFA135DF00 /* Pods_tonkotsu_ramen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tonkotsu_ramen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		668C30B926719E50002FD8AD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AE4058E1F343D2AD16539FC /* Pods_tonkotsu_ramen.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		668C30CF26719E52002FD8AD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3D1EF8A77D7AB641A0F1F84C /* Pods_tonkotsu_ramenTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		668C30DA26719E52002FD8AD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C670FFC5CEE0A4F6E53DCA8 /* Pods_tonkotsu_ramen_tonkotsu_ramenUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5DA81760D8E87665B4764744 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EAFD36EF1CF90AFFA135DF00 /* Pods_tonkotsu_ramen.framework */,
+				04A18CA70E68C451EB568941 /* Pods_tonkotsu_ramen_tonkotsu_ramenUITests.framework */,
+				7A91F55FC3F2A0785F45E8E1 /* Pods_tonkotsu_ramenTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		668C30B326719E50002FD8AD = {
+			isa = PBXGroup;
+			children = (
+				668C30BE26719E50002FD8AD /* tonkotsu_ramen */,
+				668C30D526719E52002FD8AD /* tonkotsu_ramenTests */,
+				668C30E026719E52002FD8AD /* tonkotsu_ramenUITests */,
+				668C30BD26719E50002FD8AD /* Products */,
+				DD609A3CCB60AB2DD2E6386F /* Pods */,
+				5DA81760D8E87665B4764744 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		668C30BD26719E50002FD8AD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				668C30BC26719E50002FD8AD /* tonkotsu_ramen.app */,
+				668C30D226719E52002FD8AD /* tonkotsu_ramenTests.xctest */,
+				668C30DD26719E52002FD8AD /* tonkotsu_ramenUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		668C30BE26719E50002FD8AD /* tonkotsu_ramen */ = {
+			isa = PBXGroup;
+			children = (
+				668C30BF26719E50002FD8AD /* AppDelegate.swift */,
+				668C30C126719E50002FD8AD /* SceneDelegate.swift */,
+				668C30C326719E50002FD8AD /* ViewController.swift */,
+				668C30C526719E50002FD8AD /* Main.storyboard */,
+				668C30C826719E52002FD8AD /* Assets.xcassets */,
+				668C30CA26719E52002FD8AD /* LaunchScreen.storyboard */,
+				668C30CD26719E52002FD8AD /* Info.plist */,
+				668C30EF2671A3DF002FD8AD /* Article.swift */,
+				668C30F12671A537002FD8AD /* QiitaApi.swift */,
+			);
+			path = tonkotsu_ramen;
+			sourceTree = "<group>";
+		};
+		668C30D526719E52002FD8AD /* tonkotsu_ramenTests */ = {
+			isa = PBXGroup;
+			children = (
+				668C30D626719E52002FD8AD /* tonkotsu_ramenTests.swift */,
+				668C30D826719E52002FD8AD /* Info.plist */,
+			);
+			path = tonkotsu_ramenTests;
+			sourceTree = "<group>";
+		};
+		668C30E026719E52002FD8AD /* tonkotsu_ramenUITests */ = {
+			isa = PBXGroup;
+			children = (
+				668C30E126719E52002FD8AD /* tonkotsu_ramenUITests.swift */,
+				668C30E326719E52002FD8AD /* Info.plist */,
+			);
+			path = tonkotsu_ramenUITests;
+			sourceTree = "<group>";
+		};
+		DD609A3CCB60AB2DD2E6386F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B0A0A4861D41EDFE156815E7 /* Pods-tonkotsu_ramen.debug.xcconfig */,
+				7755F99191303681329E969D /* Pods-tonkotsu_ramen.release.xcconfig */,
+				05F8C614189598025DD205BE /* Pods-tonkotsu_ramen-tonkotsu_ramenUITests.debug.xcconfig */,
+				B44BBD323E4398EDF1F1360F /* Pods-tonkotsu_ramen-tonkotsu_ramenUITests.release.xcconfig */,
+				B3A7DA406C34D9A6C8AF187E /* Pods-tonkotsu_ramenTests.debug.xcconfig */,
+				667914CACC882458ED599277 /* Pods-tonkotsu_ramenTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		668C30BB26719E50002FD8AD /* tonkotsu_ramen */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 668C30E626719E52002FD8AD /* Build configuration list for PBXNativeTarget "tonkotsu_ramen" */;
+			buildPhases = (
+				3B3ACF5DFE2757458FF50ED9 /* [CP] Check Pods Manifest.lock */,
+				668C30B826719E50002FD8AD /* Sources */,
+				668C30B926719E50002FD8AD /* Frameworks */,
+				668C30BA26719E50002FD8AD /* Resources */,
+				A0A13D6895650A8EBBD4C586 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = tonkotsu_ramen;
+			productName = tonkotsu_ramen;
+			productReference = 668C30BC26719E50002FD8AD /* tonkotsu_ramen.app */;
+			productType = "com.apple.product-type.application";
+		};
+		668C30D126719E52002FD8AD /* tonkotsu_ramenTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 668C30E926719E52002FD8AD /* Build configuration list for PBXNativeTarget "tonkotsu_ramenTests" */;
+			buildPhases = (
+				9EBB9A73FDBF9C1634FE8EAE /* [CP] Check Pods Manifest.lock */,
+				668C30CE26719E52002FD8AD /* Sources */,
+				668C30CF26719E52002FD8AD /* Frameworks */,
+				668C30D026719E52002FD8AD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				668C30D426719E52002FD8AD /* PBXTargetDependency */,
+			);
+			name = tonkotsu_ramenTests;
+			productName = tonkotsu_ramenTests;
+			productReference = 668C30D226719E52002FD8AD /* tonkotsu_ramenTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		668C30DC26719E52002FD8AD /* tonkotsu_ramenUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 668C30EC26719E52002FD8AD /* Build configuration list for PBXNativeTarget "tonkotsu_ramenUITests" */;
+			buildPhases = (
+				B275CB2F7C9C36237430A07D /* [CP] Check Pods Manifest.lock */,
+				668C30D926719E52002FD8AD /* Sources */,
+				668C30DA26719E52002FD8AD /* Frameworks */,
+				668C30DB26719E52002FD8AD /* Resources */,
+				4727AFD75820A0ECE9C4CD82 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				668C30DF26719E52002FD8AD /* PBXTargetDependency */,
+			);
+			name = tonkotsu_ramenUITests;
+			productName = tonkotsu_ramenUITests;
+			productReference = 668C30DD26719E52002FD8AD /* tonkotsu_ramenUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		668C30B426719E50002FD8AD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					668C30BB26719E50002FD8AD = {
+						CreatedOnToolsVersion = 12.5;
+					};
+					668C30D126719E52002FD8AD = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = 668C30BB26719E50002FD8AD;
+					};
+					668C30DC26719E52002FD8AD = {
+						CreatedOnToolsVersion = 12.5;
+						TestTargetID = 668C30BB26719E50002FD8AD;
+					};
+				};
+			};
+			buildConfigurationList = 668C30B726719E50002FD8AD /* Build configuration list for PBXProject "tonkotsu_ramen" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 668C30B326719E50002FD8AD;
+			productRefGroup = 668C30BD26719E50002FD8AD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				668C30BB26719E50002FD8AD /* tonkotsu_ramen */,
+				668C30D126719E52002FD8AD /* tonkotsu_ramenTests */,
+				668C30DC26719E52002FD8AD /* tonkotsu_ramenUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		668C30BA26719E50002FD8AD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				668C30CC26719E52002FD8AD /* LaunchScreen.storyboard in Resources */,
+				668C30C926719E52002FD8AD /* Assets.xcassets in Resources */,
+				668C30C726719E50002FD8AD /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		668C30D026719E52002FD8AD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		668C30DB26719E52002FD8AD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3B3ACF5DFE2757458FF50ED9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-tonkotsu_ramen-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4727AFD75820A0ECE9C4CD82 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tonkotsu_ramen-tonkotsu_ramenUITests/Pods-tonkotsu_ramen-tonkotsu_ramenUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tonkotsu_ramen-tonkotsu_ramenUITests/Pods-tonkotsu_ramen-tonkotsu_ramenUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-tonkotsu_ramen-tonkotsu_ramenUITests/Pods-tonkotsu_ramen-tonkotsu_ramenUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9EBB9A73FDBF9C1634FE8EAE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-tonkotsu_ramenTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A0A13D6895650A8EBBD4C586 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tonkotsu_ramen/Pods-tonkotsu_ramen-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tonkotsu_ramen/Pods-tonkotsu_ramen-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-tonkotsu_ramen/Pods-tonkotsu_ramen-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B275CB2F7C9C36237430A07D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-tonkotsu_ramen-tonkotsu_ramenUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		668C30B826719E50002FD8AD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				668C30F02671A3DF002FD8AD /* Article.swift in Sources */,
+				668C30C426719E50002FD8AD /* ViewController.swift in Sources */,
+				668C30F22671A537002FD8AD /* QiitaApi.swift in Sources */,
+				668C30C026719E50002FD8AD /* AppDelegate.swift in Sources */,
+				668C30C226719E50002FD8AD /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		668C30CE26719E52002FD8AD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				668C30D726719E52002FD8AD /* tonkotsu_ramenTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		668C30D926719E52002FD8AD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				668C30E226719E52002FD8AD /* tonkotsu_ramenUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		668C30D426719E52002FD8AD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 668C30BB26719E50002FD8AD /* tonkotsu_ramen */;
+			targetProxy = 668C30D326719E52002FD8AD /* PBXContainerItemProxy */;
+		};
+		668C30DF26719E52002FD8AD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 668C30BB26719E50002FD8AD /* tonkotsu_ramen */;
+			targetProxy = 668C30DE26719E52002FD8AD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		668C30C526719E50002FD8AD /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				668C30C626719E50002FD8AD /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		668C30CA26719E52002FD8AD /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				668C30CB26719E52002FD8AD /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		668C30E426719E52002FD8AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		668C30E526719E52002FD8AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		668C30E726719E52002FD8AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B0A0A4861D41EDFE156815E7 /* Pods-tonkotsu_ramen.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 84Y6X6PKWV;
+				INFOPLIST_FILE = tonkotsu_ramen/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.omochi.tonkotsu-ramen";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		668C30E826719E52002FD8AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7755F99191303681329E969D /* Pods-tonkotsu_ramen.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 84Y6X6PKWV;
+				INFOPLIST_FILE = tonkotsu_ramen/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.omochi.tonkotsu-ramen";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		668C30EA26719E52002FD8AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3A7DA406C34D9A6C8AF187E /* Pods-tonkotsu_ramenTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 84Y6X6PKWV;
+				INFOPLIST_FILE = tonkotsu_ramenTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.omochi.tonkotsu-ramenTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/tonkotsu_ramen.app/tonkotsu_ramen";
+			};
+			name = Debug;
+		};
+		668C30EB26719E52002FD8AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 667914CACC882458ED599277 /* Pods-tonkotsu_ramenTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 84Y6X6PKWV;
+				INFOPLIST_FILE = tonkotsu_ramenTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.omochi.tonkotsu-ramenTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/tonkotsu_ramen.app/tonkotsu_ramen";
+			};
+			name = Release;
+		};
+		668C30ED26719E52002FD8AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 05F8C614189598025DD205BE /* Pods-tonkotsu_ramen-tonkotsu_ramenUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 84Y6X6PKWV;
+				INFOPLIST_FILE = tonkotsu_ramenUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.omochi.tonkotsu-ramenUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = tonkotsu_ramen;
+			};
+			name = Debug;
+		};
+		668C30EE26719E52002FD8AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B44BBD323E4398EDF1F1360F /* Pods-tonkotsu_ramen-tonkotsu_ramenUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 84Y6X6PKWV;
+				INFOPLIST_FILE = tonkotsu_ramenUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.omochi.tonkotsu-ramenUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = tonkotsu_ramen;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		668C30B726719E50002FD8AD /* Build configuration list for PBXProject "tonkotsu_ramen" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				668C30E426719E52002FD8AD /* Debug */,
+				668C30E526719E52002FD8AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		668C30E626719E52002FD8AD /* Build configuration list for PBXNativeTarget "tonkotsu_ramen" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				668C30E726719E52002FD8AD /* Debug */,
+				668C30E826719E52002FD8AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		668C30E926719E52002FD8AD /* Build configuration list for PBXNativeTarget "tonkotsu_ramenTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				668C30EA26719E52002FD8AD /* Debug */,
+				668C30EB26719E52002FD8AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		668C30EC26719E52002FD8AD /* Build configuration list for PBXNativeTarget "tonkotsu_ramenUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				668C30ED26719E52002FD8AD /* Debug */,
+				668C30EE26719E52002FD8AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 668C30B426719E50002FD8AD /* Project object */;
+}
