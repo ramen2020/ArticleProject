@@ -8,6 +8,8 @@ target 'tonkotsu_ramen' do
   # Pods for tonkotsu_ramen
   pod 'Moya'
   pod 'Kingfisher'
+  pod 'RxSwift'
+  pod 'RxCocoa'
 
   target 'tonkotsu_ramenTests' do
     inherit! :search_paths
