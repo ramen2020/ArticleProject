@@ -23,12 +23,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         articleViewModel = ArticleViewModel()
         
-        // 入力欄の変化をviewModelへ伝える
         searchTextField.rx.text.orEmpty
+            .filter { $0.count >= 1 }   
             .bind(to: articleViewModel.input.searchWord)
             .disposed(by: disposeBag)
         
-        // viewModelの変化をUIに伝える
         articleViewModel.output.articles
             .bind(to: table.rx.items) { tableView, row, element in
                 let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
@@ -47,5 +46,4 @@ class ViewController: UIViewController, UITextFieldDelegate {
             }
             .disposed(by: disposeBag)
     }
-    
 }

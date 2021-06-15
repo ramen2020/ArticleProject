@@ -11,7 +11,7 @@ import RxCocoa
 import Moya
 
 protocol ArticleViewModelInputs {
-    var searchWord: PublishRelay<String> {get}
+    var searchWord: AnyObserver<String> { get }
 }
 
 protocol ArticleViewModelOutputs {
@@ -24,7 +24,7 @@ protocol ArticleViewModelType {
 }
 
 class ArticleViewModel: ArticleViewModelInputs, ArticleViewModelOutputs {
-    let searchWord = PublishRelay<String>()
+    let searchWord: AnyObserver<String>
     let articles: Observable<[Article]>
     private let disposeBag = DisposeBag()
     private let provider = MoyaProvider<QiitaAPI>()
@@ -33,16 +33,26 @@ class ArticleViewModel: ArticleViewModelInputs, ArticleViewModelOutputs {
         let _articles = PublishRelay<[Article]>()
         self.articles = _articles.asObservable()
         
-        self.featchQiitaArticles().subscribe(onNext: { response in
-            _articles.accept(response)
-        }).disposed(by: disposeBag)
-    }
-    
-    // 記事一覧
-    func featchQiitaArticles() -> Observable<[Article]> {
-        provider.rx.request(.all)
-            .map([Article].self)
-            .asObservable()
+        let _searchWord = PublishRelay<String>()
+        self.searchWord = AnyObserver<String>() { event in
+            guard let text = event.element else {
+                return
+            }
+            _searchWord.accept(text)
+        }
+
+        _searchWord.debounce(RxTimeInterval(1), scheduler: MainScheduler())
+            .subscribe(onNext: { text in
+                QiitaApiRepository.fetchQiitaArticlesBySearchWord(searchWord: text)
+                    .subscribe(onNext: { response in
+                        _articles.accept(response)
+                })
+            }).disposed(by: disposeBag)
+        
+        QiitaApiRepository.fetchQiitaArticles()
+            .subscribe(onNext: { response in
+                _articles.accept(response)
+            }).disposed(by: disposeBag)
     }
 }
 
