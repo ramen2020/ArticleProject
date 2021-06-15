@@ -15,41 +15,41 @@ extension ObservableConvertibleType {
      - parameter onErrorJustReturn: Element to return in case of error and after that complete the sequence.
      - returns: Signal trait.
      */
-    public func asSignal(onErrorJustReturn: Element) -> Signal<Element> {
+    public func asSignal(onErrorJustReturn: E) -> Signal<E> {
         let source = self
             .asObservable()
-            .observe(on: SignalSharingStrategy.scheduler)
-            .catchAndReturn(onErrorJustReturn)
+            .observeOn(SignalSharingStrategy.scheduler)
+            .catchErrorJustReturn(onErrorJustReturn)
         return Signal(source)
     }
 
     /**
-     Converts observable sequence to `Signal` trait.
+     Converts observable sequence to `Driver` trait.
 
-     - parameter onErrorSignalWith: Signal that continues to emit the sequence in case of error.
+     - parameter onErrorDriveWith: Driver that continues to drive the sequence in case of error.
      - returns: Signal trait.
      */
-    public func asSignal(onErrorSignalWith: Signal<Element>) -> Signal<Element> {
+    public func asSignal(onErrorSignalWith: Signal<E>) -> Signal<E> {
         let source = self
             .asObservable()
-            .observe(on: SignalSharingStrategy.scheduler)
-            .catch { _ in
+            .observeOn(SignalSharingStrategy.scheduler)
+            .catchError { _ in
                 onErrorSignalWith.asObservable()
             }
         return Signal(source)
     }
 
     /**
-     Converts observable sequence to `Signal` trait.
+     Converts observable sequence to `Driver` trait.
 
-     - parameter onErrorRecover: Calculates signal that continues to emit the sequence in case of error.
+     - parameter onErrorRecover: Calculates driver that continues to drive the sequence in case of error.
      - returns: Signal trait.
      */
-    public func asSignal(onErrorRecover: @escaping (_ error: Swift.Error) -> Signal<Element>) -> Signal<Element> {
+    public func asSignal(onErrorRecover: @escaping (_ error: Swift.Error) -> Signal<E>) -> Signal<E> {
         let source = self
             .asObservable()
-            .observe(on: SignalSharingStrategy.scheduler)
-            .catch { error in
+            .observeOn(SignalSharingStrategy.scheduler)
+            .catchError { error in
                 onErrorRecover(error).asObservable()
             }
         return Signal(source)

@@ -16,13 +16,14 @@ extension ObservableType {
      - parameter predicate: A function to test each source element for a condition.
      - returns: An observable sequence that contains elements from the input sequence that satisfy the condition.
      */
-    public func filter(_ predicate: @escaping (Element) throws -> Bool)
-        -> Observable<Element> {
-        Filter(source: self.asObservable(), predicate: predicate)
+    public func filter(_ predicate: @escaping (E) throws -> Bool)
+        -> Observable<E> {
+        return Filter(source: self.asObservable(), predicate: predicate)
     }
 }
 
 extension ObservableType {
+
     /**
      Skips elements and completes (or errors) when the observable sequence completes (or errors). Equivalent to filter that always returns false.
 
@@ -31,19 +32,22 @@ extension ObservableType {
      - returns: An observable sequence that skips all elements of the source sequence.
      */
     public func ignoreElements()
-        -> Observable<Never> {
-        self.flatMap { _ in Observable<Never>.empty() }
+        -> Completable {
+            return self.flatMap { _ in
+                return Observable<Never>.empty()
+            }
+            .asCompletable()
     }
 }
 
-final private class FilterSink<Observer: ObserverType>: Sink<Observer>, ObserverType {
+final private class FilterSink<O: ObserverType>: Sink<O>, ObserverType {
     typealias Predicate = (Element) throws -> Bool
-    typealias Element = Observer.Element
+    typealias Element = O.E
     
-    private let predicate: Predicate
+    private let _predicate: Predicate
     
-    init(predicate: @escaping Predicate, observer: Observer, cancel: Cancelable) {
-        self.predicate = predicate
+    init(predicate: @escaping Predicate, observer: O, cancel: Cancelable) {
+        self._predicate = predicate
         super.init(observer: observer, cancel: cancel)
     }
     
@@ -51,7 +55,7 @@ final private class FilterSink<Observer: ObserverType>: Sink<Observer>, Observer
         switch event {
         case .next(let value):
             do {
-                let satisfies = try self.predicate(value)
+                let satisfies = try self._predicate(value)
                 if satisfies {
                     self.forwardOn(.next(value))
                 }
@@ -70,17 +74,17 @@ final private class FilterSink<Observer: ObserverType>: Sink<Observer>, Observer
 final private class Filter<Element>: Producer<Element> {
     typealias Predicate = (Element) throws -> Bool
     
-    private let source: Observable<Element>
-    private let predicate: Predicate
+    private let _source: Observable<Element>
+    private let _predicate: Predicate
     
     init(source: Observable<Element>, predicate: @escaping Predicate) {
-        self.source = source
-        self.predicate = predicate
+        self._source = source
+        self._predicate = predicate
     }
     
-    override func run<Observer: ObserverType>(_ observer: Observer, cancel: Cancelable) -> (sink: Disposable, subscription: Disposable) where Observer.Element == Element {
-        let sink = FilterSink(predicate: self.predicate, observer: observer, cancel: cancel)
-        let subscription = self.source.subscribe(sink)
+    override func run<O: ObserverType>(_ observer: O, cancel: Cancelable) -> (sink: Disposable, subscription: Disposable) where O.E == Element {
+        let sink = FilterSink(predicate: self._predicate, observer: observer, cancel: cancel)
+        let subscription = self._source.subscribe(sink)
         return (sink: sink, subscription: subscription)
     }
 }

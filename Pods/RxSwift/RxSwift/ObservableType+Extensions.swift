@@ -17,54 +17,14 @@ extension ObservableType {
      - parameter on: Action to invoke for each event in the observable sequence.
      - returns: Subscription object used to unsubscribe from the observable sequence.
      */
-    public func subscribe(_ on: @escaping (Event<Element>) -> Void) -> Disposable {
-        let observer = AnonymousObserver { e in
-            on(e)
-        }
-        return self.asObservable().subscribe(observer)
-    }
-    
-    /**
-     Subscribes an element handler, an error handler, a completion handler and disposed handler to an observable sequence.
-     
-     Also, take in an object and provide an unretained, safe to use (i.e. not implicitly unwrapped), reference to it along with the events emitted by the sequence.
-     
-     - Note: If `object` can't be retained, none of the other closures will be invoked.
-     
-     - parameter object: The object to provide an unretained reference on.
-     - parameter onNext: Action to invoke for each element in the observable sequence.
-     - parameter onError: Action to invoke upon errored termination of the observable sequence.
-     - parameter onCompleted: Action to invoke upon graceful termination of the observable sequence.
-     - parameter onDisposed: Action to invoke upon any type of termination of sequence (if the sequence has
-     gracefully completed, errored, or if the generation is canceled by disposing subscription).
-     - returns: Subscription object used to unsubscribe from the observable sequence.
-     */
-    public func subscribe<Object: AnyObject>(
-        with object: Object,
-        onNext: ((Object, Element) -> Void)? = nil,
-        onError: ((Object, Swift.Error) -> Void)? = nil,
-        onCompleted: ((Object) -> Void)? = nil,
-        onDisposed: ((Object) -> Void)? = nil
-    ) -> Disposable {
-        subscribe(
-            onNext: { [weak object] in
-                guard let object = object else { return }
-                onNext?(object, $0)
-            },
-            onError: { [weak object] in
-                guard let object = object else { return }
-                onError?(object, $0)
-            },
-            onCompleted: { [weak object] in
-                guard let object = object else { return }
-                onCompleted?(object)
-            },
-            onDisposed: { [weak object] in
-                guard let object = object else { return }
-                onDisposed?(object)
+    public func subscribe(_ on: @escaping (Event<E>) -> Void)
+        -> Disposable {
+            let observer = AnonymousObserver { e in
+                on(e)
             }
-        )
+            return self.asObservable().subscribe(observer)
     }
+    
     
     /**
      Subscribes an element handler, an error handler, a completion handler and disposed handler to an observable sequence.
@@ -76,12 +36,8 @@ extension ObservableType {
      gracefully completed, errored, or if the generation is canceled by disposing subscription).
      - returns: Subscription object used to unsubscribe from the observable sequence.
      */
-    public func subscribe(
-        onNext: ((Element) -> Void)? = nil,
-        onError: ((Swift.Error) -> Void)? = nil,
-        onCompleted: (() -> Void)? = nil,
-        onDisposed: (() -> Void)? = nil
-    ) -> Disposable {
+    public func subscribe(onNext: ((E) -> Void)? = nil, onError: ((Swift.Error) -> Void)? = nil, onCompleted: (() -> Void)? = nil, onDisposed: (() -> Void)? = nil)
+        -> Disposable {
             let disposable: Disposable
             
             if let disposed = onDisposed {
@@ -97,7 +53,7 @@ extension ObservableType {
             
             let callStack = Hooks.recordCallStackOnError ? Hooks.customCaptureSubscriptionCallstack() : []
             
-            let observer = AnonymousObserver<Element> { event in
+            let observer = AnonymousObserver<E> { event in
                 
                 #if DEBUG
                     synchronizationTracker.register(synchronizationErrorMessage: .default)
@@ -127,23 +83,20 @@ extension ObservableType {
     }
 }
 
-import Foundation
+import class Foundation.NSRecursiveLock
 
 extension Hooks {
     public typealias DefaultErrorHandler = (_ subscriptionCallStack: [String], _ error: Error) -> Void
     public typealias CustomCaptureSubscriptionCallstack = () -> [String]
 
-    private static let lock = RecursiveLock()
-    private static var _defaultErrorHandler: DefaultErrorHandler = { subscriptionCallStack, error in
+    fileprivate static let _lock = RecursiveLock()
+    fileprivate static var _defaultErrorHandler: DefaultErrorHandler = { subscriptionCallStack, error in
         #if DEBUG
             let serializedCallStack = subscriptionCallStack.joined(separator: "\n")
-            print("Unhandled error happened: \(error)")
-            if !serializedCallStack.isEmpty {
-                print("subscription called from:\n\(serializedCallStack)")
-            }
+            print("Unhandled error happened: \(error)\n subscription called from:\n\(serializedCallStack)")
         #endif
     }
-    private static var _customCaptureSubscriptionCallstack: CustomCaptureSubscriptionCallstack = {
+    fileprivate static var _customCaptureSubscriptionCallstack: CustomCaptureSubscriptionCallstack = {
         #if DEBUG
             return Thread.callStackSymbols
         #else
@@ -154,20 +107,24 @@ extension Hooks {
     /// Error handler called in case onError handler wasn't provided.
     public static var defaultErrorHandler: DefaultErrorHandler {
         get {
-            lock.performLocked { _defaultErrorHandler }
+            _lock.lock(); defer { _lock.unlock() }
+            return _defaultErrorHandler
         }
         set {
-            lock.performLocked { _defaultErrorHandler = newValue }
+            _lock.lock(); defer { _lock.unlock() }
+            _defaultErrorHandler = newValue
         }
     }
     
     /// Subscription callstack block to fetch custom callstack information.
     public static var customCaptureSubscriptionCallstack: CustomCaptureSubscriptionCallstack {
         get {
-            lock.performLocked { _customCaptureSubscriptionCallstack }
+            _lock.lock(); defer { _lock.unlock() }
+            return _customCaptureSubscriptionCallstack
         }
         set {
-            lock.performLocked { _customCaptureSubscriptionCallstack = newValue }
+            _lock.lock(); defer { _lock.unlock() }
+            _customCaptureSubscriptionCallstack = newValue
         }
     }
 }

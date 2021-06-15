@@ -26,8 +26,8 @@
         /// Parent object associated with delegate proxy.
         private weak var _parentObject: ParentObject?
 
-        private let _currentDelegateFor: (ParentObject) -> AnyObject?
-        private let _setCurrentDelegateTo: (AnyObject?, ParentObject) -> Void
+        fileprivate let _currentDelegateFor: (ParentObject) -> AnyObject?
+        fileprivate let _setCurrentDelegateTo: (AnyObject?, ParentObject) -> Void
 
         /// Initializes new instance.
         ///
@@ -258,7 +258,7 @@
 
     private let mainScheduler = MainScheduler()
 
-    private final class MessageDispatcher {
+    fileprivate final class MessageDispatcher {
         private let dispatcher: PublishSubject<[Any]>
         private let result: Observable<[Any]>
 
@@ -274,7 +274,7 @@
             self.result = dispatcher
                 .do(onSubscribed: { weakDelegateProxy?.checkSelectorIsObservable(selector); weakDelegateProxy?.reset() }, onDispose: { weakDelegateProxy?.reset() })
                 .share()
-                .subscribe(on: mainScheduler)
+                .subscribeOn(mainScheduler)
         }
 
         var on: (Event<[Any]>) -> Void {

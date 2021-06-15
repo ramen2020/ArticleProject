@@ -15,11 +15,11 @@ extension ObservableConvertibleType {
     - parameter onErrorJustReturn: Element to return in case of error and after that complete the sequence.
     - returns: Driver trait.
     */
-    public func asDriver(onErrorJustReturn: Element) -> Driver<Element> {
+    public func asDriver(onErrorJustReturn: E) -> Driver<E> {
         let source = self
             .asObservable()
-            .observe(on:DriverSharingStrategy.scheduler)
-            .catchAndReturn(onErrorJustReturn)
+            .observeOn(DriverSharingStrategy.scheduler)
+            .catchErrorJustReturn(onErrorJustReturn)
         return Driver(source)
     }
     
@@ -29,11 +29,11 @@ extension ObservableConvertibleType {
     - parameter onErrorDriveWith: Driver that continues to drive the sequence in case of error.
     - returns: Driver trait.
     */
-    public func asDriver(onErrorDriveWith: Driver<Element>) -> Driver<Element> {
+    public func asDriver(onErrorDriveWith: Driver<E>) -> Driver<E> {
         let source = self
             .asObservable()
-            .observe(on:DriverSharingStrategy.scheduler)
-            .catch { _ in
+            .observeOn(DriverSharingStrategy.scheduler)
+            .catchError { _ in
                 onErrorDriveWith.asObservable()
             }
         return Driver(source)
@@ -45,11 +45,11 @@ extension ObservableConvertibleType {
     - parameter onErrorRecover: Calculates driver that continues to drive the sequence in case of error.
     - returns: Driver trait.
     */
-    public func asDriver(onErrorRecover: @escaping (_ error: Swift.Error) -> Driver<Element>) -> Driver<Element> {
+    public func asDriver(onErrorRecover: @escaping (_ error: Swift.Error) -> Driver<E>) -> Driver<E> {
         let source = self
             .asObservable()
-            .observe(on:DriverSharingStrategy.scheduler)
-            .catch { error in
+            .observeOn(DriverSharingStrategy.scheduler)
+            .catchError { error in
                 onErrorRecover(error).asObservable()
             }
         return Driver(source)

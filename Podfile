@@ -6,7 +6,8 @@ target 'tonkotsu_ramen' do
   use_frameworks!
 
   # Pods for tonkotsu_ramen
-  pod 'Moya'
+#  pod 'Moya'
+  pod 'Moya/RxSwift'
   pod 'Kingfisher'
   pod 'RxSwift'
   pod 'RxCocoa'

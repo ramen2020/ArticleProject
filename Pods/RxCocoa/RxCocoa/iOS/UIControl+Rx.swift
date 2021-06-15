@@ -11,11 +11,30 @@
 import RxSwift
 import UIKit
 
+#if swift(>=4.2)
+    public typealias UIControlEvents = UIControl.Event
+#endif
+
 extension Reactive where Base: UIControl {
+    
+    /// Bindable sink for `enabled` property.
+    public var isEnabled: Binder<Bool> {
+        return Binder(self.base) { control, value in
+            control.isEnabled = value
+        }
+    }
+
+    /// Bindable sink for `selected` property.
+    public var isSelected: Binder<Bool> {
+        return Binder(self.base) { control, selected in
+            control.isSelected = selected
+        }
+    }
+
     /// Reactive wrapper for target action pattern.
     ///
     /// - parameter controlEvents: Filter for observed event types.
-    public func controlEvent(_ controlEvents: UIControl.Event) -> ControlEvent<()> {
+    public func controlEvent(_ controlEvents: UIControlEvents) -> ControlEvent<()> {
         let source: Observable<Void> = Observable.create { [weak control = self.base] observer in
                 MainScheduler.ensureRunningOnMainThread()
 
@@ -30,7 +49,7 @@ extension Reactive where Base: UIControl {
 
                 return Disposables.create(with: controlTarget.dispose)
             }
-            .take(until: deallocated)
+            .takeUntil(deallocated)
 
         return ControlEvent(events: source)
     }
@@ -41,7 +60,7 @@ extension Reactive where Base: UIControl {
     /// - parameter getter: Property value getter.
     /// - parameter setter: Property value setter.
     public func controlProperty<T>(
-        editingEvents: UIControl.Event,
+        editingEvents: UIControlEvents,
         getter: @escaping (Base) -> T,
         setter: @escaping (Base, T) -> Void
     ) -> ControlProperty<T> {
@@ -61,7 +80,7 @@ extension Reactive where Base: UIControl {
                 
                 return Disposables.create(with: controlTarget.dispose)
             }
-            .take(until: deallocated)
+            .takeUntil(deallocated)
 
         let bindingObserver = Binder(base, binding: setter)
 
@@ -71,7 +90,7 @@ extension Reactive where Base: UIControl {
     /// This is a separate method to better communicate to public consumers that
     /// an `editingEvent` needs to fire for control property to be updated.
     internal func controlPropertyWithDefaultEvents<T>(
-        editingEvents: UIControl.Event = [.allEditingEvents, .valueChanged],
+        editingEvents: UIControlEvents = [.allEditingEvents, .valueChanged],
         getter: @escaping (Base) -> T,
         setter: @escaping (Base, T) -> Void
         ) -> ControlProperty<T> {

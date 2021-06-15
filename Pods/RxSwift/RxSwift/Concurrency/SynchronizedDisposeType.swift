@@ -6,13 +6,13 @@
 //  Copyright © 2015 Krunoslav Zaher. All rights reserved.
 //
 
-protocol SynchronizedDisposeType: AnyObject, Disposable, Lock {
-    func synchronized_dispose()
+protocol SynchronizedDisposeType : class, Disposable, Lock {
+    func _synchronized_dispose()
 }
 
 extension SynchronizedDisposeType {
     func synchronizedDispose() {
         self.lock(); defer { self.unlock() }
-        self.synchronized_dispose()
+        self._synchronized_dispose()
     }
 }

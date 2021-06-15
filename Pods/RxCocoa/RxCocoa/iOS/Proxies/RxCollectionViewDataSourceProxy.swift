@@ -15,14 +15,14 @@ extension UICollectionView: HasDataSource {
     public typealias DataSource = UICollectionViewDataSource
 }
 
-private let collectionViewDataSourceNotSet = CollectionViewDataSourceNotSet()
+fileprivate let collectionViewDataSourceNotSet = CollectionViewDataSourceNotSet()
 
-private final class CollectionViewDataSourceNotSet
+fileprivate final class CollectionViewDataSourceNotSet
     : NSObject
     , UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        0
+        return 0
     }
     
     // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
@@ -58,12 +58,12 @@ open class RxCollectionViewDataSourceProxy
 
     /// Required delegate method implementation.
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        (_requiredMethodsDataSource ?? collectionViewDataSourceNotSet).collectionView(collectionView, numberOfItemsInSection: section)
+        return (_requiredMethodsDataSource ?? collectionViewDataSourceNotSet).collectionView(collectionView, numberOfItemsInSection: section)
     }
     
     /// Required delegate method implementation.
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        (_requiredMethodsDataSource ?? collectionViewDataSourceNotSet).collectionView(collectionView, cellForItemAt: indexPath)
+        return (_requiredMethodsDataSource ?? collectionViewDataSourceNotSet).collectionView(collectionView, cellForItemAt: indexPath)
     }
 
     /// For more information take a look at `DelegateProxyType`.

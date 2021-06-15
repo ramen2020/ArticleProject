@@ -8,6 +8,8 @@
 
 /// Represents an observable sequence of elements that have a common key.
 public struct GroupedObservable<Key, Element> : ObservableType {
+    public typealias E = Element
+
     /// Gets the common key.
     public let key: Key
 
@@ -24,12 +26,12 @@ public struct GroupedObservable<Key, Element> : ObservableType {
     }
 
     /// Subscribes `observer` to receive events for this sequence.
-    public func subscribe<Observer: ObserverType>(_ observer: Observer) -> Disposable where Observer.Element == Element {
-        self.source.subscribe(observer)
+    public func subscribe<O : ObserverType>(_ observer: O) -> Disposable where O.E == E {
+        return self.source.subscribe(observer)
     }
 
     /// Converts `self` to `Observable` sequence. 
     public func asObservable() -> Observable<Element> {
-        self.source
+        return self.source
     }
 }

@@ -22,20 +22,20 @@ class RxPickerViewArrayDataSource<T>: NSObject, UIPickerViewDataSource, Sectione
     }
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        1
+        return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        items.count
+        return items.count
     }
 }
 
-class RxPickerViewSequenceDataSource<Sequence: Swift.Sequence>
-    : RxPickerViewArrayDataSource<Sequence.Element>
+class RxPickerViewSequenceDataSource<S: Sequence>
+    : RxPickerViewArrayDataSource<S.Iterator.Element>
     , RxPickerViewDataSourceType {
-    typealias Element = Sequence
+    typealias Element = S
 
-    func pickerView(_ pickerView: UIPickerView, observedEvent: Event<Sequence>) {
+    func pickerView(_ pickerView: UIPickerView, observedEvent: Event<S>) {
         Binder(self) { dataSource, items in
             dataSource.items = items
             pickerView.reloadAllComponents()
@@ -44,11 +44,11 @@ class RxPickerViewSequenceDataSource<Sequence: Swift.Sequence>
     }
 }
 
-final class RxStringPickerViewAdapter<Sequence: Swift.Sequence>
-    : RxPickerViewSequenceDataSource<Sequence>
+final class RxStringPickerViewAdapter<S: Sequence>
+    : RxPickerViewSequenceDataSource<S>
     , UIPickerViewDelegate {
     
-    typealias TitleForRow = (Int, Sequence.Element) -> String?
+    typealias TitleForRow = (Int, S.Iterator.Element) -> String?
     private let titleForRow: TitleForRow
     
     init(titleForRow: @escaping TitleForRow) {
@@ -57,12 +57,12 @@ final class RxStringPickerViewAdapter<Sequence: Swift.Sequence>
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        titleForRow(row, items[row])
+        return titleForRow(row, items[row])
     }
 }
 
-final class RxAttributedStringPickerViewAdapter<Sequence: Swift.Sequence>: RxPickerViewSequenceDataSource<Sequence>, UIPickerViewDelegate {
-    typealias AttributedTitleForRow = (Int, Sequence.Element) -> NSAttributedString?
+final class RxAttributedStringPickerViewAdapter<S: Sequence>: RxPickerViewSequenceDataSource<S>, UIPickerViewDelegate {
+    typealias AttributedTitleForRow = (Int, S.Iterator.Element) -> NSAttributedString?
     private let attributedTitleForRow: AttributedTitleForRow
     
     init(attributedTitleForRow: @escaping AttributedTitleForRow) {
@@ -71,12 +71,12 @@ final class RxAttributedStringPickerViewAdapter<Sequence: Swift.Sequence>: RxPic
     }
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        attributedTitleForRow(row, items[row])
+        return attributedTitleForRow(row, items[row])
     }
 }
 
-final class RxPickerViewAdapter<Sequence: Swift.Sequence>: RxPickerViewSequenceDataSource<Sequence>, UIPickerViewDelegate {
-    typealias ViewForRow = (Int, Sequence.Element, UIView?) -> UIView
+final class RxPickerViewAdapter<S: Sequence>: RxPickerViewSequenceDataSource<S>, UIPickerViewDelegate {
+    typealias ViewForRow = (Int, S.Iterator.Element, UIView?) -> UIView
     private let viewForRow: ViewForRow
     
     init(viewForRow: @escaping ViewForRow) {
@@ -85,7 +85,7 @@ final class RxPickerViewAdapter<Sequence: Swift.Sequence>: RxPickerViewSequenceD
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        viewForRow(row, items[row], view)
+        return viewForRow(row, items[row], view)
     }
 }
 

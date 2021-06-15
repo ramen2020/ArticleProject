@@ -39,12 +39,12 @@ extension Reactive where Base: UICollectionView {
          }
          .disposed(by: disposeBag)
     */
-    public func items<Sequence: Swift.Sequence, Source: ObservableType>
-        (_ source: Source)
-        -> (_ cellFactory: @escaping (UICollectionView, Int, Sequence.Element) -> UICollectionViewCell)
-        -> Disposable where Source.Element == Sequence {
+    public func items<S: Sequence, O: ObservableType>
+        (_ source: O)
+        -> (_ cellFactory: @escaping (UICollectionView, Int, S.Iterator.Element) -> UICollectionViewCell)
+        -> Disposable where O.E == S {
         return { cellFactory in
-            let dataSource = RxCollectionViewReactiveArrayDataSourceSequenceWrapper<Sequence>(cellFactory: cellFactory)
+            let dataSource = RxCollectionViewReactiveArrayDataSourceSequenceWrapper<S>(cellFactory: cellFactory)
             return self.items(dataSource: dataSource)(source)
         }
         
@@ -56,7 +56,7 @@ extension Reactive where Base: UICollectionView {
     - parameter cellIdentifier: Identifier used to dequeue cells.
     - parameter source: Observable sequence of items.
     - parameter configureCell: Transform between sequence elements and view cells.
-    - parameter cellType: Type of collection view cell.
+    - parameter cellType: Type of table view cell.
     - returns: Disposable object that can be used to unbind.
      
      Example
@@ -73,14 +73,14 @@ extension Reactive where Base: UICollectionView {
              }
              .disposed(by: disposeBag)
     */
-    public func items<Sequence: Swift.Sequence, Cell: UICollectionViewCell, Source: ObservableType>
+    public func items<S: Sequence, Cell: UICollectionViewCell, O : ObservableType>
         (cellIdentifier: String, cellType: Cell.Type = Cell.self)
-        -> (_ source: Source)
-        -> (_ configureCell: @escaping (Int, Sequence.Element, Cell) -> Void)
-        -> Disposable where Source.Element == Sequence {
+        -> (_ source: O)
+        -> (_ configureCell: @escaping (Int, S.Iterator.Element, Cell) -> Void)
+        -> Disposable where O.E == S {
         return { source in
             return { configureCell in
-                let dataSource = RxCollectionViewReactiveArrayDataSourceSequenceWrapper<Sequence> { cv, i, item in
+                let dataSource = RxCollectionViewReactiveArrayDataSourceSequenceWrapper<S> { cv, i, item in
                     let indexPath = IndexPath(item: i, section: 0)
                     let cell = cv.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! Cell
                     configureCell(i, item, cell)
@@ -134,10 +134,10 @@ extension Reactive where Base: UICollectionView {
     */
     public func items<
             DataSource: RxCollectionViewDataSourceType & UICollectionViewDataSource,
-            Source: ObservableType>
+            O: ObservableType>
         (dataSource: DataSource)
-        -> (_ source: Source)
-        -> Disposable where DataSource.Element == Source.Element
+        -> (_ source: O)
+        -> Disposable where DataSource.Element == O.E
           {
         return { source in
             // This is called for sideeffects only, and to make sure delegate proxy is in place when
@@ -166,7 +166,7 @@ extension Reactive where Base: UICollectionView {
     ///
     /// For more information take a look at `DelegateProxyType` protocol documentation.
     public var dataSource: DelegateProxy<UICollectionView, UICollectionViewDataSource> {
-        RxCollectionViewDataSourceProxy.proxy(for: base)
+        return RxCollectionViewDataSourceProxy.proxy(for: base)
     }
     
     /// Installs data source as forwarding delegate on `rx.dataSource`.
@@ -178,7 +178,7 @@ extension Reactive where Base: UICollectionView {
     /// - returns: Disposable object that can be used to unbind the data source.
     public func setDataSource(_ dataSource: UICollectionViewDataSource)
         -> Disposable {
-        RxCollectionViewDataSourceProxy.installForwardDelegate(dataSource, retainDelegate: false, onProxyForObject: self.base)
+        return RxCollectionViewDataSourceProxy.installForwardDelegate(dataSource, retainDelegate: false, onProxyForObject: self.base)
     }
    
     /// Reactive wrapper for `delegate` message `collectionView(_:didSelectItemAtIndexPath:)`.
@@ -324,7 +324,7 @@ extension Reactive where Base: UICollectionView {
     ///
     /// For more information take a look at `DelegateProxyType` protocol documentation.
     public var prefetchDataSource: DelegateProxy<UICollectionView, UICollectionViewDataSourcePrefetching> {
-        RxCollectionViewDataSourcePrefetchingProxy.proxy(for: base)
+        return RxCollectionViewDataSourcePrefetchingProxy.proxy(for: base)
     }
 
     /**

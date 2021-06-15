@@ -17,8 +17,8 @@ extension ObservableType {
      - returns: An observable sequence that emits a single element or throws an exception if more (or none) of them are emitted.
      */
     public func single()
-        -> Observable<Element> {
-        SingleAsync(source: self.asObservable())
+        -> Observable<E> {
+        return SingleAsync(source: self.asObservable())
     }
 
     /**
@@ -30,29 +30,30 @@ extension ObservableType {
      - parameter predicate: A function to test each source element for a condition.
      - returns: An observable sequence that emits a single element or throws an exception if more (or none) of them are emitted.
      */
-    public func single(_ predicate: @escaping (Element) throws -> Bool)
-        -> Observable<Element> {
-        SingleAsync(source: self.asObservable(), predicate: predicate)
+    public func single(_ predicate: @escaping (E) throws -> Bool)
+        -> Observable<E> {
+        return SingleAsync(source: self.asObservable(), predicate: predicate)
     }
 }
 
-private final class SingleAsyncSink<Observer: ObserverType> : Sink<Observer>, ObserverType {
-    typealias Element = Observer.Element
-    typealias Parent = SingleAsync<Element>
+fileprivate final class SingleAsyncSink<O: ObserverType> : Sink<O>, ObserverType {
+    typealias ElementType = O.E
+    typealias Parent = SingleAsync<ElementType>
+    typealias E = ElementType
     
-    private let parent: Parent
-    private var seenValue: Bool = false
+    private let _parent: Parent
+    private var _seenValue: Bool = false
     
-    init(parent: Parent, observer: Observer, cancel: Cancelable) {
-        self.parent = parent
+    init(parent: Parent, observer: O, cancel: Cancelable) {
+        self._parent = parent
         super.init(observer: observer, cancel: cancel)
     }
     
-    func on(_ event: Event<Element>) {
+    func on(_ event: Event<E>) {
         switch event {
         case .next(let value):
             do {
-                let forward = try self.parent.predicate?(value) ?? true
+                let forward = try self._parent._predicate?(value) ?? true
                 if !forward {
                     return
                 }
@@ -63,19 +64,19 @@ private final class SingleAsyncSink<Observer: ObserverType> : Sink<Observer>, Ob
                 return
             }
 
-            if self.seenValue {
+            if self._seenValue {
                 self.forwardOn(.error(RxError.moreThanOneElement))
                 self.dispose()
                 return
             }
 
-            self.seenValue = true
+            self._seenValue = true
             self.forwardOn(.next(value))
         case .error:
             self.forwardOn(event)
             self.dispose()
         case .completed:
-            if self.seenValue {
+            if self._seenValue {
                 self.forwardOn(.completed)
             } else {
                 self.forwardOn(.error(RxError.noElements))
@@ -88,17 +89,17 @@ private final class SingleAsyncSink<Observer: ObserverType> : Sink<Observer>, Ob
 final class SingleAsync<Element>: Producer<Element> {
     typealias Predicate = (Element) throws -> Bool
     
-    private let source: Observable<Element>
-    fileprivate let predicate: Predicate?
+    fileprivate let _source: Observable<Element>
+    fileprivate let _predicate: Predicate?
     
     init(source: Observable<Element>, predicate: Predicate? = nil) {
-        self.source = source
-        self.predicate = predicate
+        self._source = source
+        self._predicate = predicate
     }
     
-    override func run<Observer: ObserverType>(_ observer: Observer, cancel: Cancelable) -> (sink: Disposable, subscription: Disposable) where Observer.Element == Element {
+    override func run<O : ObserverType>(_ observer: O, cancel: Cancelable) -> (sink: Disposable, subscription: Disposable) where O.E == Element {
         let sink = SingleAsyncSink(parent: self, observer: observer, cancel: cancel)
-        let subscription = self.source.subscribe(sink)
+        let subscription = self._source.subscribe(sink)
         return (sink: sink, subscription: subscription)
     }
 }

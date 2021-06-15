@@ -18,15 +18,15 @@ class _RxCollectionViewReactiveArrayDataSource
     
     @objc(numberOfSectionsInCollectionView:)
     func numberOfSections(in: UICollectionView) -> Int {
-        1
+        return 1
     }
 
     func _collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        0
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        _collectionView(collectionView, numberOfItemsInSection: section)
+        return _collectionView(collectionView, numberOfItemsInSection: section)
     }
 
     fileprivate func _collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -34,20 +34,20 @@ class _RxCollectionViewReactiveArrayDataSource
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        _collectionView(collectionView, cellForItemAt: indexPath)
+        return _collectionView(collectionView, cellForItemAt: indexPath)
     }
 }
 
-class RxCollectionViewReactiveArrayDataSourceSequenceWrapper<Sequence: Swift.Sequence>
-    : RxCollectionViewReactiveArrayDataSource<Sequence.Element>
+class RxCollectionViewReactiveArrayDataSourceSequenceWrapper<S: Sequence>
+    : RxCollectionViewReactiveArrayDataSource<S.Iterator.Element>
     , RxCollectionViewDataSourceType {
-    typealias Element = Sequence
+    typealias Element = S
 
     override init(cellFactory: @escaping CellFactory) {
         super.init(cellFactory: cellFactory)
     }
     
-    func collectionView(_ collectionView: UICollectionView, observedEvent: Event<Sequence>) {
+    func collectionView(_ collectionView: UICollectionView, observedEvent: Event<S>) {
         Binder(self) { collectionViewDataSource, sectionModels in
             let sections = Array(sectionModels)
             collectionViewDataSource.collectionView(collectionView, observedElements: sections)
@@ -66,7 +66,7 @@ class RxCollectionViewReactiveArrayDataSource<Element>
     var itemModels: [Element]?
     
     func modelAtIndex(_ index: Int) -> Element? {
-        itemModels?[index]
+        return itemModels?[index]
     }
 
     func model(at indexPath: IndexPath) throws -> Any {
@@ -86,11 +86,11 @@ class RxCollectionViewReactiveArrayDataSource<Element>
     // data source
     
     override func _collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        itemModels?.count ?? 0
+        return itemModels?.count ?? 0
     }
     
     override func _collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        cellFactory(collectionView, indexPath.item, itemModels![indexPath.item])
+        return cellFactory(collectionView, indexPath.item, itemModels![indexPath.item])
     }
     
     // reactive
