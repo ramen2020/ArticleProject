@@ -35,19 +35,20 @@ class ArticleViewModel: ArticleViewModelInputs, ArticleViewModelOutputs {
         
         let _searchWord = PublishRelay<String>()
         self.searchWord = AnyObserver<String>() { event in
-            guard let text = event.element else {
-                return
-            }
+            guard let text = event.element else { return }
             _searchWord.accept(text)
         }
 
-        _searchWord.debounce(RxTimeInterval(1), scheduler: MainScheduler())
-            .subscribe(onNext: { text in
-                QiitaApiRepository.fetchQiitaArticlesBySearchWord(searchWord: text)
-                    .subscribe(onNext: { response in
-                        _articles.accept(response)
-                })
-            }).disposed(by: disposeBag)
+        _searchWord
+            .debounce(RxTimeInterval(1), scheduler: MainScheduler())
+            .flatMap { searchWord in
+                QiitaApiRepository.fetchQiitaArticlesBySearchWord(searchWord: searchWord)
+            }
+            .subscribe(onNext: { response in
+                _articles.accept(response)
+            })
+            .disposed(by: disposeBag)
+
         
         QiitaApiRepository.fetchQiitaArticles()
             .subscribe(onNext: { response in
