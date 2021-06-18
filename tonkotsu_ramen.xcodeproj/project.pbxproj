@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3D1EF8A77D7AB641A0F1F84C /* Pods_tonkotsu_ramenTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A91F55FC3F2A0785F45E8E1 /* Pods_tonkotsu_ramenTests.framework */; };
+		66003BE227995423001D6A38 /* ArticleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66003BE127995423001D6A38 /* ArticleTableViewCell.xib */; };
 		6639E5D926799E510040CB4B /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6639E5D726799E510040CB4B /* ArticleTableViewCell.swift */; };
-		6639E5DA26799E510040CB4B /* ArticleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6639E5D826799E510040CB4B /* ArticleTableViewCell.xib */; };
 		6682C0D52677299400C244F8 /* ArticleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6682C0D42677299400C244F8 /* ArticleViewModel.swift */; };
 		6689E5682678BEDC00FBFF12 /* QiitaApiRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6689E5672678BEDC00FBFF12 /* QiitaApiRepository.swift */; };
 		668C30C026719E50002FD8AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668C30BF26719E50002FD8AD /* AppDelegate.swift */; };
@@ -46,8 +46,8 @@
 /* Begin PBXFileReference section */
 		04A18CA70E68C451EB568941 /* Pods_tonkotsu_ramen_tonkotsu_ramenUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tonkotsu_ramen_tonkotsu_ramenUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		05F8C614189598025DD205BE /* Pods-tonkotsu_ramen-tonkotsu_ramenUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tonkotsu_ramen-tonkotsu_ramenUITests.debug.xcconfig"; path = "Target Support Files/Pods-tonkotsu_ramen-tonkotsu_ramenUITests/Pods-tonkotsu_ramen-tonkotsu_ramenUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		66003BE127995423001D6A38 /* ArticleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ArticleTableViewCell.xib; sourceTree = "<group>"; };
 		6639E5D726799E510040CB4B /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
-		6639E5D826799E510040CB4B /* ArticleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticleTableViewCell.xib; sourceTree = "<group>"; };
 		667914CACC882458ED599277 /* Pods-tonkotsu_ramenTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tonkotsu_ramenTests.release.xcconfig"; path = "Target Support Files/Pods-tonkotsu_ramenTests/Pods-tonkotsu_ramenTests.release.xcconfig"; sourceTree = "<group>"; };
 		6682C0D42677299400C244F8 /* ArticleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewModel.swift; sourceTree = "<group>"; };
 		6689E5672678BEDC00FBFF12 /* QiitaApiRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaApiRepository.swift; sourceTree = "<group>"; };
@@ -136,7 +136,7 @@
 				668C30C326719E50002FD8AD /* ViewController.swift */,
 				668C30C526719E50002FD8AD /* Main.storyboard */,
 				6639E5D726799E510040CB4B /* ArticleTableViewCell.swift */,
-				6639E5D826799E510040CB4B /* ArticleTableViewCell.xib */,
+				66003BE127995423001D6A38 /* ArticleTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -326,9 +326,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6639E5DA26799E510040CB4B /* ArticleTableViewCell.xib in Resources */,
 				668C30CC26719E52002FD8AD /* LaunchScreen.storyboard in Resources */,
 				668C30C926719E52002FD8AD /* Assets.xcassets in Resources */,
+				66003BE227995423001D6A38 /* ArticleTableViewCell.xib in Resources */,
 				668C30C726719E50002FD8AD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
