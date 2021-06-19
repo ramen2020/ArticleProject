@@ -1,21 +1,16 @@
-//
-//  ArticleViewModel.swift
-//  tonkotsu_ramen
-//
-//  Created by 宮本光直 on 2021/06/14.
-//
-
 import Foundation
 import RxSwift
 import RxCocoa
-import Moya
 
 protocol ArticleViewModelInputs {
-    var searchWord: AnyObserver<String> { get }
+    var searchWord: AnyObserver<String> {get}
+    var searchCategoryButtonTapped: AnyObserver<SearchArticleCategoryButton> {get}
 }
 
 protocol ArticleViewModelOutputs {
     var articles: Observable<[Article]> {get}
+    var isSelectedCategoryId: Observable<Int> {get}
+    var isFetching: Observable<Bool> {get}
 }
 
 protocol ArticleViewModelType {
@@ -24,41 +19,70 @@ protocol ArticleViewModelType {
 }
 
 class ArticleViewModel: ArticleViewModelInputs, ArticleViewModelOutputs {
-    let searchWord: AnyObserver<String>
-    let articles: Observable<[Article]>
+    
+    // output
+    var articles: Observable<[Article]>
+    var isSelectedCategoryId: Observable<Int>
+    var isFetching: Observable<Bool>
+    
+    // input
+    var searchWord: AnyObserver<String>
+    var searchCategoryButtonTapped: AnyObserver<SearchArticleCategoryButton>
+    
     private let disposeBag = DisposeBag()
-    private let provider = MoyaProvider<QiitaAPI>()
     
     init() {
+        
+        // output
         let _articles = PublishRelay<[Article]>()
         self.articles = _articles.asObservable()
+        
+        let _isSelectedCategoryId = PublishRelay<Int>()
+        self.isSelectedCategoryId = _isSelectedCategoryId.asObservable()
+        
+        let _isFetching = PublishRelay<Bool>()
+        self.isFetching = _isFetching.asObservable()
+        
+        // input
+        let _searchCategoryButtonTapped = PublishRelay<SearchArticleCategoryButton>()
+        self.searchCategoryButtonTapped = AnyObserver<SearchArticleCategoryButton>() { event in
+            guard let searchCategoryButton = event.element else {return}
+            _isFetching.accept(true)
+            _searchCategoryButtonTapped.accept(searchCategoryButton)
+        }
         
         let _searchWord = PublishRelay<String>()
         self.searchWord = AnyObserver<String>() { event in
             guard let text = event.element else { return }
-            
+            _isFetching.accept(true)
             _searchWord.accept(text)
         }
-
-        _searchWord
-            .debug("--------検索欄に入力しています------------")
+        
+        let _ = QiitaApiRepository.fetchQiitaArticles()
+            .subscribe(onNext: { response in
+                _isFetching.accept(false)
+                _articles.accept(response)
+            }).disposed(by: disposeBag)
+        
+        let _ = _searchWord
             .debounce(RxTimeInterval(1), scheduler: MainScheduler())
-//            .flatMapLatest { searchWord in
-//                QiitaApiRepository.fetchQiitaArticlesBySearchWord(searchWord: searchWord)
-//            }
             .flatMap { searchWord in
                 QiitaApiRepository.fetchQiitaArticlesBySearchWord(searchWord: searchWord)
             }
-            .debug("-----------記事取得しました-------------")
             .subscribe(onNext: { response in
+                _isFetching.accept(false)
                 _articles.accept(response)
             })
             .disposed(by: disposeBag)
-
         
-        QiitaApiRepository.fetchQiitaArticles()
-            .subscribe(onNext: { response in
-                _articles.accept(response)
+        let _ = _searchCategoryButtonTapped
+            .flatMap {
+                QiitaApiRepository.fetchQiitaArticlesByCategory(category: $0.name)
+            }
+            .subscribe({event in
+                guard let articles = event.element else {return}
+                _isFetching.accept(false)
+                _articles.accept(articles)
             }).disposed(by: disposeBag)
     }
 }
