@@ -11,6 +11,7 @@ protocol ArticleViewModelOutputs {
     var articles: Observable<[Article]> {get}
     var isSelectedCategoryId: Observable<Int> {get}
     var isFetching: Observable<Bool> {get}
+    var error: Observable<Error> {get}
 }
 
 protocol ArticleViewModelType {
@@ -24,6 +25,7 @@ class ArticleViewModel: ArticleViewModelInputs, ArticleViewModelOutputs {
     var articles: Observable<[Article]>
     var isSelectedCategoryId: Observable<Int>
     var isFetching: Observable<Bool>
+    var error: Observable<Error>
     
     // input
     var searchWord: AnyObserver<String>
@@ -43,6 +45,9 @@ class ArticleViewModel: ArticleViewModelInputs, ArticleViewModelOutputs {
         let _isFetching = PublishRelay<Bool>()
         self.isFetching = _isFetching.asObservable()
         
+        let _error = PublishRelay<Error>()
+        self.error = _error.asObservable()
+        
         // input
         let _searchCategoryButtonTapped = PublishRelay<SearchArticleCategoryButton>()
         self.searchCategoryButtonTapped = AnyObserver<SearchArticleCategoryButton>() { event in
@@ -54,35 +59,52 @@ class ArticleViewModel: ArticleViewModelInputs, ArticleViewModelOutputs {
         let _searchWord = PublishRelay<String>()
         self.searchWord = AnyObserver<String>() { event in
             guard let text = event.element else { return }
-            _isFetching.accept(true)
             _searchWord.accept(text)
         }
         
         let _ = QiitaApiRepository.fetchQiitaArticles()
-            .subscribe(onNext: { response in
+            .materialize()
+            .subscribe(onNext: { event in
                 _isFetching.accept(false)
-                _articles.accept(response)
+                switch event {
+                case .next(let response):
+                    _articles.accept(response)
+                case .error(let error):
+                    _error.accept(error)
+                case .completed: break
+                }
             }).disposed(by: disposeBag)
         
         let _ = _searchWord
             .debounce(RxTimeInterval(1), scheduler: MainScheduler())
             .flatMap { searchWord in
                 QiitaApiRepository.fetchQiitaArticlesBySearchWord(searchWord: searchWord)
+                    .materialize()
             }
-            .subscribe(onNext: { response in
-                _isFetching.accept(false)
-                _articles.accept(response)
-            })
-            .disposed(by: disposeBag)
+            .subscribe(onNext: { event in
+                switch event {
+                case .next(let response):
+                    _articles.accept(response)
+                case .error(let error):
+                    _error.accept(error)
+                case .completed: break
+                }
+            }).disposed(by: disposeBag)
         
         let _ = _searchCategoryButtonTapped
             .flatMap {
                 QiitaApiRepository.fetchQiitaArticlesByCategory(category: $0.name)
+                    .materialize()
             }
-            .subscribe({event in
-                guard let articles = event.element else {return}
+            .subscribe(onNext: { event in
                 _isFetching.accept(false)
-                _articles.accept(articles)
+                switch event {
+                case .next(let response):
+                    _articles.accept(response)
+                case .error(let error):
+                    _error.accept(error)
+                case .completed: break
+                }
             }).disposed(by: disposeBag)
     }
 }
