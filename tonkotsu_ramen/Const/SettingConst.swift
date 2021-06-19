@@ -1,7 +1,6 @@
 import Foundation
 
 class SettingConst {
-    
     static let searchCategoryButtons: [SearchArticleCategoryButton] = [
         SearchArticleCategoryButton(id: 1, name: "Swift"),
         SearchArticleCategoryButton(id: 2, name: "Flutter"),
@@ -10,5 +9,4 @@ class SettingConst {
         SearchArticleCategoryButton(id: 5, name: "Docker"),
         SearchArticleCategoryButton(id: 6, name: "AWS"),
     ]
-
 }
