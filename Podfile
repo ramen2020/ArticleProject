@@ -11,6 +11,8 @@ target 'tonkotsu_ramen' do
   pod 'Kingfisher'
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'R.swift'
+  pod "SwiftSpinner"
 
   target 'tonkotsu_ramenTests' do
     inherit! :search_paths

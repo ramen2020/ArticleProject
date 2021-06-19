@@ -7,34 +7,46 @@ PODS:
   - Moya/RxSwift (13.0.1):
     - Moya/Core
     - RxSwift (~> 4.0)
+  - R.swift (6.1.0):
+    - R.swift.Library (~> 5.3.0)
+  - R.swift.Library (5.3.0)
   - Result (4.1.0)
   - RxCocoa (4.5.0):
     - RxSwift (>= 4.4.2, ~> 4.4)
   - RxSwift (4.5.0)
+  - SwiftSpinner (2.2.0)
 
 DEPENDENCIES:
   - Kingfisher
   - Moya/RxSwift
+  - R.swift
   - RxCocoa
   - RxSwift
+  - SwiftSpinner
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - Kingfisher
     - Moya
+    - R.swift
+    - R.swift.Library
     - Result
     - RxCocoa
     - RxSwift
+    - SwiftSpinner
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   Kingfisher: 6c3df386db71d82c0817a429d2c9421a77396529
   Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
+  R.swift: ec98ff71c4ab2f6fd01dd077e5afd15e63a4834c
+  R.swift.Library: 0fc583cb55a99e28901299cc451614cad1161962
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
   RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
+  SwiftSpinner: f9b59477fe107427f2b5b835497d6636fa167ede
 
-PODFILE CHECKSUM: 9b1a85e6a818c7ba5ed652da884d36021b31aa67
+PODFILE CHECKSUM: c541cfb93e957a01d142be8dc0692e1220aba9af
 
 COCOAPODS: 1.10.1

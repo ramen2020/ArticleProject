@@ -47,3 +47,5 @@ iOSInjectionProject/
 TodoList.md
 
 .github/
+
+*.generated.swift
