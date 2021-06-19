@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,37 +17,55 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="検索してください。" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ooc-bQ-P8g">
-                                <rect key="frame" x="16" y="89" width="382" height="34"/>
+                                <rect key="frame" x="16" y="60" width="382" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="scrollableAxes" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="beC-sU-AWO">
+                                <rect key="frame" x="0.0" y="217" width="414" height="679"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="iXn-sH-dVk">
+                                <rect key="frame" x="0.0" y="110" width="414" height="60"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="haN-Q8-FNh"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Us2-j8-o4l">
+                                    <size key="itemSize" width="128" height="51"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="記事一覧" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dtN-RV-gmF">
-                                <rect key="frame" x="26" y="139" width="73.5" height="21"/>
+                                <rect key="frame" x="20" y="186" width="73.5" height="21"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="scrollableAxes" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="beC-sU-AWO">
-                                <rect key="frame" x="0.0" y="168" width="414" height="728"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Ooc-bQ-P8g" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="45" id="85D-fR-Zes"/>
+                            <constraint firstItem="iXn-sH-dVk" firstAttribute="trailing" secondItem="beC-sU-AWO" secondAttribute="trailing" id="41G-af-ghU"/>
                             <constraint firstItem="beC-sU-AWO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="As5-hk-24F"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ooc-bQ-P8g" secondAttribute="trailing" constant="16" id="Hrt-W5-JVS"/>
+                            <constraint firstItem="iXn-sH-dVk" firstAttribute="top" secondItem="Ooc-bQ-P8g" secondAttribute="bottom" constant="16" id="KHM-F6-XY5"/>
                             <constraint firstItem="beC-sU-AWO" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="TNY-fc-wgy"/>
-                            <constraint firstItem="dtN-RV-gmF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="26" id="Zcp-bR-xz0"/>
+                            <constraint firstItem="dtN-RV-gmF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="UAH-GG-11C"/>
+                            <constraint firstItem="beC-sU-AWO" firstAttribute="top" secondItem="dtN-RV-gmF" secondAttribute="bottom" constant="10" id="WQ8-to-T8l"/>
                             <constraint firstAttribute="bottom" secondItem="beC-sU-AWO" secondAttribute="bottom" id="ZgM-BT-9gl"/>
-                            <constraint firstItem="dtN-RV-gmF" firstAttribute="top" secondItem="Ooc-bQ-P8g" secondAttribute="bottom" constant="16" id="gHT-i9-pGD"/>
-                            <constraint firstItem="beC-sU-AWO" firstAttribute="top" secondItem="dtN-RV-gmF" secondAttribute="bottom" constant="8" id="ouO-dM-5FI"/>
+                            <constraint firstItem="Ooc-bQ-P8g" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="i9z-W2-YQv"/>
+                            <constraint firstItem="iXn-sH-dVk" firstAttribute="leading" secondItem="beC-sU-AWO" secondAttribute="leading" id="ooi-m5-lY5"/>
+                            <constraint firstItem="dtN-RV-gmF" firstAttribute="top" secondItem="iXn-sH-dVk" secondAttribute="bottom" constant="16" id="rTw-Am-RS3"/>
                             <constraint firstItem="Ooc-bQ-P8g" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="vBO-RZ-rMA"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dtN-RV-gmF" secondAttribute="trailing" symbolic="YES" id="vfh-9B-D3n"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="collectionView" destination="iXn-sH-dVk" id="Q1u-4j-8TM"/>
                         <outlet property="searchTextField" destination="Ooc-bQ-P8g" id="YgC-8M-DCM"/>
                         <outlet property="tableView" destination="beC-sU-AWO" id="XVK-lD-xNv"/>
                     </connections>
