@@ -23,10 +23,35 @@ class ViewController: UIViewController, UITextFieldDelegate {
         setUpSettings()
         setUpTableView()
         setupCollectionView()
+        viewModelInput()
+        viewModelOutput()
+    }
+    
+    func setUpSettings() {
+        self.searchArticleCategoryButtons = SettingConst.searchCategoryButtons
+    }
+    
+    func setUpTableView() {
+        tableView.delegate = self
+        tableView.register(R.nib.articleTableViewCell)
+        tableView.separatorStyle = .none
+    }
+    
+    func setupCollectionView() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(R.nib.categoryButtonCollectionViewCell)
         
-        // input
+        // 横スクロール
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        collectionView.collectionViewLayout = layout
+        collectionView.showsHorizontalScrollIndicator = false
+    }
+    
+    func viewModelInput() {
         searchTextField.rx.text.orEmpty
-            .filter { $0.count >= 1 }   
+            .filter { $0.count >= 1 }
             .bind(to: articleViewModel.input.searchWord)
             .disposed(by: disposeBag)
         
@@ -37,8 +62,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
                     .onNext(self.searchArticleCategoryButtons[element.row])
             })
             .disposed(by: disposeBag)
-        
-        // output
+    }
+    
+    func viewModelOutput() {
         articleViewModel.output.articles
             .bind(to: tableView.rx.items) { tableView, row, element in
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleTableViewCell")
@@ -69,28 +95,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 guard let self = self else {return}
                 AlertUtil.errorAlert(vc: self, error: error)
             }).disposed(by: disposeBag)
-    }
-    
-    func setUpSettings() {
-        self.searchArticleCategoryButtons = SettingConst.searchCategoryButtons
-    }
-    
-    func setUpTableView() {
-        tableView.delegate = self
-        tableView.register(R.nib.articleTableViewCell)
-        tableView.separatorStyle = .none
-    }
-    
-    func setupCollectionView() {
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.register(R.nib.categoryButtonCollectionViewCell)
-        
-        // 横スクロール
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        collectionView.collectionViewLayout = layout
-        collectionView.showsHorizontalScrollIndicator = false
     }
 }
 
