@@ -139,6 +139,16 @@
 			path = Utillity;
 			sourceTree = "<group>";
 		};
+		6606F279279B1FAC006030CB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				668C30EF2671A3DF002FD8AD /* Article.swift */,
+				6624580927999871003E4174 /* SearchArticleCategoryButton.swift */,
+				6606F26E279AE500006030CB /* ArticleError.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		6624580627999789003E4174 /* Const */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,16 +165,6 @@
 				6682C0D42677299400C244F8 /* ArticleViewModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		6682C0D1267721E900C244F8 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				668C30EF2671A3DF002FD8AD /* Article.swift */,
-				6624580927999871003E4174 /* SearchArticleCategoryButton.swift */,
-				6606F26E279AE500006030CB /* ArticleError.swift */,
-			);
-			name = Model;
 			sourceTree = "<group>";
 		};
 		6682C0D22677226000C244F8 /* View */ = {
@@ -218,7 +218,7 @@
 				6624580627999789003E4174 /* Const */,
 				6606F274279AFABE006030CB /* Utillity */,
 				6689E5662678BE7B00FBFF12 /* Repository */,
-				6682C0D1267721E900C244F8 /* Model */,
+				6606F279279B1FAC006030CB /* Model */,
 				6682C0D0267721BE00C244F8 /* ViewModel */,
 				6682C0D22677226000C244F8 /* View */,
 				668C30C126719E50002FD8AD /* SceneDelegate.swift */,
