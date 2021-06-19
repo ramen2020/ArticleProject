@@ -1,10 +1,3 @@
-//
-//  tonkotsu_ramenTests.swift
-//  tonkotsu_ramenTests
-//
-//  Created by 宮本光直 on 2021/06/10.
-//
-
 import XCTest
 @testable import tonkotsu_ramen
 

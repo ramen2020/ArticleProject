@@ -1,10 +1,3 @@
-//
-//  tonkotsu_ramenUITests.swift
-//  tonkotsu_ramenUITests
-//
-//  Created by 宮本光直 on 2021/06/10.
-//
-
 import XCTest
 
 class tonkotsu_ramenUITests: XCTestCase {
