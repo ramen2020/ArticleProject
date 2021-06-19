@@ -1,13 +1,3 @@
-//
-//  QiitaApiRepository.swift
-//  tonkotsu_ramen
-//
-//  Created by 宮本光直 on 2021/06/15.
-//
-
-import Foundation
-
-
 import Foundation
 import Moya
 import RxSwift
@@ -28,7 +18,15 @@ extension QiitaApiRepository {
     }
     
     static func fetchQiitaArticlesBySearchWord(searchWord: String) -> Observable<[Article]> {
-        apiProvider.rx.request(.search(searchWord: searchWord))
+        apiProvider.rx.request(.searchByText(searchWord: searchWord))
+            .map { response in
+                let decoder = JSONDecoder()
+                return try decoder.decode([Article].self, from: response.data)}
+            .asObservable()
+    }
+
+    static func fetchQiitaArticlesByCategory(category: String) -> Observable<[Article]> {
+        apiProvider.rx.request(.searchByCategory(category: category))
             .map { response in
                 let decoder = JSONDecoder()
                 return try decoder.decode([Article].self, from: response.data)}
