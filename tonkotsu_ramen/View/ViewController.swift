@@ -63,6 +63,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 }
             })
             .disposed(by: disposeBag)
+        
+        articleViewModel.output.error
+            .subscribe(onNext: { [weak self] error in
+                guard let self = self else {return}
+                AlertUtil.errorAlert(vc: self, error: error)
+            }).disposed(by: disposeBag)
     }
     
     func setUpSettings() {
