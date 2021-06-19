@@ -51,6 +51,7 @@
             <connections>
                 <outlet property="image" destination="vup-1a-GAF" id="92l-w1-Fx6"/>
                 <outlet property="title" destination="Gfv-dO-R4t" id="hPO-59-Ds1"/>
+                <outlet property="view" destination="5SW-UW-6uR" id="YxE-ey-gTS"/>
             </connections>
             <point key="canvasLocation" x="615.21739130434787" y="-5.6919642857142856"/>
         </collectionViewCell>

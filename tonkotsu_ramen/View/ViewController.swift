@@ -16,6 +16,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     private var articleViewModel: ArticleViewModel = ArticleViewModel()
 
     var searchArticleCategoryButtons: [SearchArticleCategoryButton] = []
+    var isSelectedCategoryButtonId: Int?
 
     private let disposeBag = DisposeBag()
     
@@ -58,6 +59,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         collectionView.rx.itemSelected
             .subscribe(onNext: { [weak self] element in
                 guard let self = self else {return}
+                self.isSelectedCategoryButtonId = element.row
+                self.collectionView.reloadData()
                 self.articleViewModel.input.searchCategoryButtonTapped
                     .onNext(self.searchArticleCategoryButtons[element.row])
             })
@@ -109,6 +112,15 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
         let targetCategoryButton = self.searchArticleCategoryButtons[indexPath.row]
         cell.title.text = targetCategoryButton.name
         cell.image.image = UIImage(named: targetCategoryButton.name)
+
+        cell.view.backgroundColor = isSelectedCategoryButtonId == indexPath.row
+            ? .yellow : .clear
+        
+        cell.layer.borderWidth = 0.0
+        cell.layer.shadowColor = UIColor.black.cgColor
+        cell.layer.shadowOffset = CGSize(width: 1, height: 1)
+        cell.layer.shadowOpacity = 0.3
+        cell.layer.masksToBounds = false
         
         return cell
     }
