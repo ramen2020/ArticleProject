@@ -1,10 +1,3 @@
-//
-//  SceneDelegate.swift
-//  tonkotsu_ramen
-//
-//  Created by 宮本光直 on 2021/06/10.
-//
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
