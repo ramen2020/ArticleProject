@@ -51,6 +51,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func viewModelInput() {
+        articleViewModel.featchArticles.onNext(Void())
+        
         searchTextField.rx.text.orEmpty
             .filter { $0.count >= 1 }
             .bind(to: articleViewModel.input.searchWord)
