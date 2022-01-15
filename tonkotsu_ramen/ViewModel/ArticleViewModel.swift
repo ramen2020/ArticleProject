@@ -3,13 +3,13 @@ import RxSwift
 import RxCocoa
 
 protocol ArticleViewModelInputs {
-    var searchWord: AnyObserver<String> {get}
+    var featchArticles: AnyObserver<Void> {get}
+    var searchWord: AnyObserver<String?> {get}
     var searchCategoryButtonTapped: AnyObserver<SearchArticleCategoryButton> {get}
 }
 
 protocol ArticleViewModelOutputs {
     var articles: Observable<[Article]> {get}
-    var isSelectedCategoryId: Observable<Int> {get}
     var isFetching: Observable<Bool> {get}
     var error: Observable<Error> {get}
 }
@@ -23,24 +23,24 @@ class ArticleViewModel: ArticleViewModelInputs, ArticleViewModelOutputs {
     
     // output
     var articles: Observable<[Article]>
-    var isSelectedCategoryId: Observable<Int>
     var isFetching: Observable<Bool>
     var error: Observable<Error>
     
     // input
-    var searchWord: AnyObserver<String>
+    var featchArticles: AnyObserver<Void>
+    var searchWord: AnyObserver<String?>
     var searchCategoryButtonTapped: AnyObserver<SearchArticleCategoryButton>
     
     private let disposeBag = DisposeBag()
     
     init() {
         
+        let articleStore = Flux.shared.articleStore
+        let articleActionCreator = Flux.shared.articleActionCreator
+        
         // output
         let _articles = PublishRelay<[Article]>()
         self.articles = _articles.asObservable()
-        
-        let _isSelectedCategoryId = PublishRelay<Int>()
-        self.isSelectedCategoryId = _isSelectedCategoryId.asObservable()
         
         let _isFetching = PublishRelay<Bool>()
         self.isFetching = _isFetching.asObservable()
@@ -49,63 +49,46 @@ class ArticleViewModel: ArticleViewModelInputs, ArticleViewModelOutputs {
         self.error = _error.asObservable()
         
         // input
+        self.featchArticles = AnyObserver<Void>() { _ in
+            articleActionCreator.fetchArticles.onNext(Void())
+        }
+        
         let _searchCategoryButtonTapped = PublishRelay<SearchArticleCategoryButton>()
         self.searchCategoryButtonTapped = AnyObserver<SearchArticleCategoryButton>() { event in
             guard let searchCategoryButton = event.element else {return}
-            _isFetching.accept(true)
             _searchCategoryButtonTapped.accept(searchCategoryButton)
         }
         
-        let _searchWord = PublishRelay<String>()
-        self.searchWord = AnyObserver<String>() { event in
+        let _searchWord = PublishRelay<String?>()
+        self.searchWord = AnyObserver<String?>() { event in
             guard let text = event.element else { return }
             _searchWord.accept(text)
         }
-        
-        let _ = QiitaApiRepository.fetchQiitaArticles()
-            .materialize()
-            .subscribe(onNext: { event in
-                _isFetching.accept(false)
-                switch event {
-                case .next(let response):
-                    _articles.accept(response)
-                case .error(let error):
-                    _error.accept(error)
-                case .completed: break
-                }
-            }).disposed(by: disposeBag)
-        
-        let _ = _searchWord
+
+        _searchWord
             .debounce(RxTimeInterval(1), scheduler: MainScheduler())
-            .flatMap { searchWord in
-                QiitaApiRepository.fetchQiitaArticlesBySearchWord(searchWord: searchWord)
-                    .materialize()
-            }
-            .subscribe(onNext: { event in
-                switch event {
-                case .next(let response):
-                    _articles.accept(response)
-                case .error(let error):
-                    _error.accept(error)
-                case .completed: break
-                }
+            .subscribe(onNext: { element in
+                guard let element = element else {return}
+                articleActionCreator.fetchArticlesBySearchWord.onNext(element)
             }).disposed(by: disposeBag)
         
-        let _ = _searchCategoryButtonTapped
-            .flatMap {
-                QiitaApiRepository.fetchQiitaArticlesByCategory(category: $0.name)
-                    .materialize()
-            }
-            .subscribe(onNext: { event in
-                _isFetching.accept(false)
-                switch event {
-                case .next(let response):
-                    _articles.accept(response)
-                case .error(let error):
-                    _error.accept(error)
-                case .completed: break
-                }
+        _searchCategoryButtonTapped
+            .subscribe(onNext: { element in
+                _isFetching.accept(true)
+                articleActionCreator.fetchArticlesBySearchCategory.onNext(element.name)
             }).disposed(by: disposeBag)
+        
+        articleStore.articles
+            .subscribe(onNext: { element in
+                guard let element = element else {return}
+                _isFetching.accept(false)
+                _articles.accept(element)
+            }).disposed(by: disposeBag)
+        
+        articleStore.error
+            .subscribe(onNext: { element in
+            _error.accept(element)
+        }).disposed(by: disposeBag)
     }
 }
 
