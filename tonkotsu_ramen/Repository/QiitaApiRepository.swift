@@ -2,12 +2,18 @@ import Foundation
 import Moya
 import RxSwift
 
+protocol QiitaApiRepositoryProtocol {
+    static func fetchQiitaArticles() -> Observable<[Article]>
+    static func fetchQiitaArticlesBySearchWord(searchWord: String) -> Observable<[Article]>
+    static func fetchQiitaArticlesByCategory(category: String) -> Observable<[Article]>
+}
+
 final class QiitaApiRepository {
     private static let apiProvider = MoyaProvider<QiitaAPI>()
     private static let disposeBag = DisposeBag()
 }
 
-extension QiitaApiRepository {
+extension QiitaApiRepository: QiitaApiRepositoryProtocol {
     
     static func fetchQiitaArticles() -> Observable<[Article]> {
         return apiProvider.rx.request(.all)
