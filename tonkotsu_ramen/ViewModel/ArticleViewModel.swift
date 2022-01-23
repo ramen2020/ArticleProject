@@ -1,6 +1,6 @@
 import Foundation
-import RxSwift
 import RxCocoa
+import RxSwift
 
 protocol ArticleViewModelInputs {
     var featchArticles: AnyObserver<Void> {get}
@@ -49,18 +49,18 @@ class ArticleViewModel: ArticleViewModelInputs, ArticleViewModelOutputs {
         self.error = _error.asObservable()
         
         // input
-        self.featchArticles = AnyObserver<Void>() { _ in
+        self.featchArticles = AnyObserver<Void> { _ in
             articleActionCreator.fetchArticles.onNext(Void())
         }
         
         let _searchCategoryButtonTapped = PublishRelay<SearchArticleCategoryButton>()
-        self.searchCategoryButtonTapped = AnyObserver<SearchArticleCategoryButton>() { event in
+        self.searchCategoryButtonTapped = AnyObserver<SearchArticleCategoryButton> { event in
             guard let searchCategoryButton = event.element else {return}
             _searchCategoryButtonTapped.accept(searchCategoryButton)
         }
         
         let _searchWord = PublishRelay<String?>()
-        self.searchWord = AnyObserver<String?>() { event in
+        self.searchWord = AnyObserver<String?> { event in
             guard let text = event.element else { return }
             _searchWord.accept(text)
         }
@@ -96,5 +96,3 @@ extension ArticleViewModel: ArticleViewModelType {
     var input: ArticleViewModelInputs {return self}
     var output: ArticleViewModelOutputs {return self}
 }
-
-

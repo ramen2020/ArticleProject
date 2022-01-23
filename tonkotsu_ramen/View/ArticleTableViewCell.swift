@@ -17,7 +17,7 @@ class ArticleTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func configure(article: Article){
+    func configure(article: Article) {
             
         let imageUrl = article.user.profile_image_url
         let url = URL(string: imageUrl)

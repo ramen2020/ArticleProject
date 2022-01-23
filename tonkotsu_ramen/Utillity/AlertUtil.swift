@@ -17,7 +17,7 @@ class AlertUtil {
         }
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let close = UIAlertAction(title: "閉じる", style: .default) { (action) in
+        let close = UIAlertAction(title: "閉じる", style: .default) { (_) in
             vc.dismiss(animated: true, completion: nil)
         }
         alert.addAction(close)

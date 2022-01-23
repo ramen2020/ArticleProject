@@ -7,6 +7,6 @@ class SettingConst {
         SearchArticleCategoryButton(id: 3, name: "Laravel"),
         SearchArticleCategoryButton(id: 4, name: "Vue"),
         SearchArticleCategoryButton(id: 5, name: "Docker"),
-        SearchArticleCategoryButton(id: 6, name: "AWS"),
+        SearchArticleCategoryButton(id: 6, name: "AWS")
     ]
 }

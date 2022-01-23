@@ -5,12 +5,12 @@ final class Flux {
     let articleActionCreator: ArticleActionCreator
     let articleStore: ArticleStore
 
-    init(ArticleDispatcher: ArticleDispatcher = .shared,
-         ArticleActionCreator: ArticleActionCreator = .shared,
-         ArticleStore: ArticleStore = .shared
+    init(articleDispatcher: ArticleDispatcher = .shared,
+         articleActionCreator: ArticleActionCreator = .shared,
+         articleStore: ArticleStore = .shared
     ) {
-        self.articleDispatcher = ArticleDispatcher
-        self.articleActionCreator = ArticleActionCreator
-        self.articleStore = ArticleStore
+        self.articleDispatcher = articleDispatcher
+        self.articleActionCreator = articleActionCreator
+        self.articleStore = articleStore
     }
 }

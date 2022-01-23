@@ -1,11 +1,10 @@
-import UIKit
-import Moya
 import Kingfisher
-import RxSwift
-import RxCocoa
+import Moya
 import Rswift
+import RxCocoa
+import RxSwift
 import SwiftSpinner
-
+import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate {
 
@@ -71,7 +70,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     func viewModelOutput() {
         articleViewModel.output.articles
-            .bind(to: tableView.rx.items) { tableView, row, element in
+            .bind(to: tableView.rx.items) { tableView, _, element in
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleTableViewCell")
                         as? ArticleTableViewCell else {
                     return UITableViewCell()
@@ -130,7 +129,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate {
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let horizontalPadding : CGFloat = 20
+        let horizontalPadding: CGFloat = 20
         let width = self.view.bounds.width / 3 - horizontalPadding
         return CGSize(width: width, height: 70)
     }
@@ -139,7 +138,6 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
         return 10
     }
 }
-
 
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
