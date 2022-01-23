@@ -1,0 +1,35 @@
+# デフォルト有効のルールのうち、無効にするもの。
+disabled_rules:
+- trailing_whitespace # 空白の改行を許可するため除外
+- identifier_name # アンスコ(_)が使えないため除外
+- function_body_length
+- cyclomatic_complexity
+- force_cast # force_cast は場合によっては使用するため除外
+- switch_case_on_newline # 一行で書きたい時もあるので除外
+- empty_enum_arguments # 値を使わない enum case を許可するため除外
+- type_name # typealiasで1文字も使うため除外
+
+# デフォルト無効のルールのうち、有効にするもの。
+opt_in_rules:
+- sorted_imports # ファイル名は名前でソートさせる
+
+
+# ライブラリは対象から外す
+excluded:
+- tonkotsu_ramen/R.generated.swift
+- tonkotsu_ramenTests
+- tonkotsu_ramenUITests
+- Pods/
+- Podfile
+- Podfile.lock
+
+line_length: 300 # プロジェクト作成時にデフォルトで追加されるコメントをひっかけないため
+
+# force cast, force try: warning
+force_cast: warning
+force_try: warning
+
+## 変数名は2文字以上
+## 変数名が１文字以上なら許可に変更
+identifier_name:
+  min_length: 1

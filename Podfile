@@ -13,6 +13,7 @@ target 'tonkotsu_ramen' do
   pod 'RxCocoa'
   pod 'R.swift'
   pod "SwiftSpinner"
+  pod 'SwiftLint'
 
   target 'tonkotsu_ramenTests' do
     inherit! :search_paths

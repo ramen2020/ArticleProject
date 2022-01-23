@@ -14,6 +14,7 @@ PODS:
   - RxCocoa (4.5.0):
     - RxSwift (>= 4.4.2, ~> 4.4)
   - RxSwift (4.5.0)
+  - SwiftLint (0.45.0)
   - SwiftSpinner (2.2.0)
 
 DEPENDENCIES:
@@ -22,6 +23,7 @@ DEPENDENCIES:
   - R.swift
   - RxCocoa
   - RxSwift
+  - SwiftLint
   - SwiftSpinner
 
 SPEC REPOS:
@@ -34,6 +36,7 @@ SPEC REPOS:
     - Result
     - RxCocoa
     - RxSwift
+    - SwiftLint
     - SwiftSpinner
 
 SPEC CHECKSUMS:
@@ -45,8 +48,9 @@ SPEC CHECKSUMS:
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
   RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
+  SwiftLint: e5c7f1fba68eccfc51509d5b2ce1699f5502e0c7
   SwiftSpinner: f9b59477fe107427f2b5b835497d6636fa167ede
 
-PODFILE CHECKSUM: c541cfb93e957a01d142be8dc0692e1220aba9af
+PODFILE CHECKSUM: a7d54083513691bb356a8830778d1c204cccaf60
 
 COCOAPODS: 1.10.1
