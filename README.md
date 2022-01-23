@@ -5,7 +5,6 @@ RxSwift / MVVM / Flux / RXMoya
 
 kickstarterのMVVM + Flux + RxSwiftのアーキテクチャを踏襲したプロジェクト。
 API接続にはRxMoyaを使用します。
-RxSwift / MVVM / Flux / RxMoyaを使用します。
 
 
 ## Architecture
@@ -27,7 +26,7 @@ RxSwift / MVVM / Flux / RxMoyaを使用します。
 - Since ActionCreators and Dispatchers share the same logic for updating and retrieving data from the store, it is easy to use on any screen. If you manage the state using only store instead of Flux, and update and retrieve store data on multiple screens, you will have to write the same process on multiple screens when updating store data in View or VM, which will be difficult if you need to modify the logic.
 <br>
 
-- 単一方向のデータフローで処理の流れを把握しやすい。
+- 単一方向のデータフローで処理の流れを把握しやすい。
 - 画面間の状態整合性が必要な場合に強い。シングルトンなクラスでデータを管理する(storeパターン)ので、状態の不整合が起きない。
 - ActionCreatorsやDispatcherでストアのデータ更新・取得ロジックの共通化することになるので、どの画面でも使いやすい。もし、Fluxでなく、storeだけで状態を管理し、複数の画面でstoreのデータを更新・取得する場合、ViewまたはVMでstoreのデータを更新する際に、複数の画面で同じ処理を書かなければいけないので、ロジックの修正が起こった場合など大変。
 
