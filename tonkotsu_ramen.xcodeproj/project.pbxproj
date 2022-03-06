@@ -14,7 +14,6 @@
 		6606F276279AFAE9006030CB /* AlertUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6606F275279AFAE9006030CB /* AlertUtil.swift */; };
 		66245802279994C7003E4174 /* CategoryButtonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66245800279994C7003E4174 /* CategoryButtonCollectionViewCell.swift */; };
 		66245803279994C7003E4174 /* CategoryButtonCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 66245801279994C7003E4174 /* CategoryButtonCollectionViewCell.xib */; };
-		6624580527999682003E4174 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6624580427999682003E4174 /* R.generated.swift */; };
 		66245808279997AC003E4174 /* SettingConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66245807279997AC003E4174 /* SettingConst.swift */; };
 		6624580A27999871003E4174 /* SearchArticleCategoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6624580927999871003E4174 /* SearchArticleCategoryButton.swift */; };
 		6624580C2799A662003E4174 /* APIConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6624580B2799A662003E4174 /* APIConst.swift */; };
@@ -28,14 +27,15 @@
 		6689E5682678BEDC00FBFF12 /* QiitaApiRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6689E5672678BEDC00FBFF12 /* QiitaApiRepository.swift */; };
 		668C30C026719E50002FD8AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668C30BF26719E50002FD8AD /* AppDelegate.swift */; };
 		668C30C226719E50002FD8AD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668C30C126719E50002FD8AD /* SceneDelegate.swift */; };
-		668C30C426719E50002FD8AD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668C30C326719E50002FD8AD /* ViewController.swift */; };
-		668C30C726719E50002FD8AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 668C30C526719E50002FD8AD /* Main.storyboard */; };
+		668C30C426719E50002FD8AD /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668C30C326719E50002FD8AD /* SearchViewController.swift */; };
+		668C30C726719E50002FD8AD /* SearchViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 668C30C526719E50002FD8AD /* SearchViewController.storyboard */; };
 		668C30C926719E52002FD8AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 668C30C826719E52002FD8AD /* Assets.xcassets */; };
 		668C30CC26719E52002FD8AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 668C30CA26719E52002FD8AD /* LaunchScreen.storyboard */; };
 		668C30D726719E52002FD8AD /* tonkotsu_ramenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668C30D626719E52002FD8AD /* tonkotsu_ramenTests.swift */; };
 		668C30E226719E52002FD8AD /* tonkotsu_ramenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668C30E126719E52002FD8AD /* tonkotsu_ramenUITests.swift */; };
 		668C30F02671A3DF002FD8AD /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668C30EF2671A3DF002FD8AD /* Article.swift */; };
 		668C30F22671A537002FD8AD /* QiitaApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668C30F12671A537002FD8AD /* QiitaApi.swift */; };
+		66C0B66427D48D4500C1D7B4 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C0B66327D48D4500C1D7B4 /* R.generated.swift */; };
 		9AE4058E1F343D2AD16539FC /* Pods_tonkotsu_ramen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAFD36EF1CF90AFFA135DF00 /* Pods_tonkotsu_ramen.framework */; };
 		9C670FFC5CEE0A4F6E53DCA8 /* Pods_tonkotsu_ramen_tonkotsu_ramenUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A18CA70E68C451EB568941 /* Pods_tonkotsu_ramen_tonkotsu_ramenUITests.framework */; };
 /* End PBXBuildFile section */
@@ -66,7 +66,6 @@
 		6606F275279AFAE9006030CB /* AlertUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertUtil.swift; sourceTree = "<group>"; };
 		66245800279994C7003E4174 /* CategoryButtonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButtonCollectionViewCell.swift; sourceTree = "<group>"; };
 		66245801279994C7003E4174 /* CategoryButtonCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryButtonCollectionViewCell.xib; sourceTree = "<group>"; };
-		6624580427999682003E4174 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = R.generated.swift; path = tonkotsu_ramen/R.generated.swift; sourceTree = "<group>"; };
 		66245807279997AC003E4174 /* SettingConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingConst.swift; sourceTree = "<group>"; };
 		6624580927999871003E4174 /* SearchArticleCategoryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchArticleCategoryButton.swift; sourceTree = "<group>"; };
 		6624580B2799A662003E4174 /* APIConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConst.swift; sourceTree = "<group>"; };
@@ -82,8 +81,8 @@
 		668C30BC26719E50002FD8AD /* tonkotsu_ramen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tonkotsu_ramen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		668C30BF26719E50002FD8AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		668C30C126719E50002FD8AD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		668C30C326719E50002FD8AD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		668C30C626719E50002FD8AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		668C30C326719E50002FD8AD /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		668C30C626719E50002FD8AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/SearchViewController.storyboard; sourceTree = "<group>"; };
 		668C30C826719E52002FD8AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		668C30CB26719E52002FD8AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		668C30CD26719E52002FD8AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -95,6 +94,7 @@
 		668C30E326719E52002FD8AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		668C30EF2671A3DF002FD8AD /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		668C30F12671A537002FD8AD /* QiitaApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaApi.swift; sourceTree = "<group>"; };
+		66C0B66327D48D4500C1D7B4 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		7755F99191303681329E969D /* Pods-tonkotsu_ramen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tonkotsu_ramen.release.xcconfig"; path = "Target Support Files/Pods-tonkotsu_ramen/Pods-tonkotsu_ramen.release.xcconfig"; sourceTree = "<group>"; };
 		7A91F55FC3F2A0785F45E8E1 /* Pods_tonkotsu_ramenTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tonkotsu_ramenTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0A0A4861D41EDFE156815E7 /* Pods-tonkotsu_ramen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tonkotsu_ramen.debug.xcconfig"; path = "Target Support Files/Pods-tonkotsu_ramen/Pods-tonkotsu_ramen.debug.xcconfig"; sourceTree = "<group>"; };
@@ -191,8 +191,8 @@
 		6682C0D22677226000C244F8 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				668C30C326719E50002FD8AD /* ViewController.swift */,
-				668C30C526719E50002FD8AD /* Main.storyboard */,
+				668C30C326719E50002FD8AD /* SearchViewController.swift */,
+				668C30C526719E50002FD8AD /* SearchViewController.storyboard */,
 				6639E5D726799E510040CB4B /* ArticleTableViewCell.swift */,
 				66003BE127995423001D6A38 /* ArticleTableViewCell.xib */,
 				66245800279994C7003E4174 /* CategoryButtonCollectionViewCell.swift */,
@@ -214,7 +214,6 @@
 			isa = PBXGroup;
 			children = (
 				663BEE4A279D1A6200C74094 /* README.md */,
-				6624580427999682003E4174 /* R.generated.swift */,
 				668C30BE26719E50002FD8AD /* tonkotsu_ramen */,
 				668C30D526719E52002FD8AD /* tonkotsu_ramenTests */,
 				668C30E026719E52002FD8AD /* tonkotsu_ramenUITests */,
@@ -237,6 +236,7 @@
 		668C30BE26719E50002FD8AD /* tonkotsu_ramen */ = {
 			isa = PBXGroup;
 			children = (
+				66C0B66327D48D4500C1D7B4 /* R.generated.swift */,
 				6624580627999789003E4174 /* Const */,
 				6606F274279AFABE006030CB /* Utillity */,
 				6689E5662678BE7B00FBFF12 /* Repository */,
@@ -398,7 +398,7 @@
 				668C30CC26719E52002FD8AD /* LaunchScreen.storyboard in Resources */,
 				668C30C926719E52002FD8AD /* Assets.xcassets in Resources */,
 				66003BE227995423001D6A38 /* ArticleTableViewCell.xib in Resources */,
-				668C30C726719E50002FD8AD /* Main.storyboard in Resources */,
+				668C30C726719E50002FD8AD /* SearchViewController.storyboard in Resources */,
 				66245803279994C7003E4174 /* CategoryButtonCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -569,10 +569,11 @@
 				6606F276279AFAE9006030CB /* AlertUtil.swift in Sources */,
 				668C30F02671A3DF002FD8AD /* Article.swift in Sources */,
 				6606F26F279AE500006030CB /* ArticleError.swift in Sources */,
-				668C30C426719E50002FD8AD /* ViewController.swift in Sources */,
+				668C30C426719E50002FD8AD /* SearchViewController.swift in Sources */,
 				663BEE45279CF9D600C74094 /* ArticleStore.swift in Sources */,
 				66245802279994C7003E4174 /* CategoryButtonCollectionViewCell.swift in Sources */,
 				663BEE47279CF9EF00C74094 /* ArticleActionCreator.swift in Sources */,
+				66C0B66427D48D4500C1D7B4 /* R.generated.swift in Sources */,
 				6624580C2799A662003E4174 /* APIConst.swift in Sources */,
 				6606F271279AEAFB006030CB /* APIErrorMessageConst.swift in Sources */,
 				663BEE49279CFA0800C74094 /* ArticleDispatcher.swift in Sources */,
@@ -582,7 +583,6 @@
 				6682C0D52677299400C244F8 /* ArticleViewModel.swift in Sources */,
 				6639E5D926799E510040CB4B /* ArticleTableViewCell.swift in Sources */,
 				6689E5682678BEDC00FBFF12 /* QiitaApiRepository.swift in Sources */,
-				6624580527999682003E4174 /* R.generated.swift in Sources */,
 				668C30C026719E50002FD8AD /* AppDelegate.swift in Sources */,
 				668C30C226719E50002FD8AD /* SceneDelegate.swift in Sources */,
 				66245808279997AC003E4174 /* SettingConst.swift in Sources */,
@@ -621,12 +621,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		668C30C526719E50002FD8AD /* Main.storyboard */ = {
+		668C30C526719E50002FD8AD /* SearchViewController.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				668C30C626719E50002FD8AD /* Base */,
 			);
-			name = Main.storyboard;
+			name = SearchViewController.storyboard;
 			sourceTree = "<group>";
 		};
 		668C30CA26719E52002FD8AD /* LaunchScreen.storyboard */ = {
