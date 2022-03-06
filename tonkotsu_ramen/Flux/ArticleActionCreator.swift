@@ -12,7 +12,10 @@ final class ArticleActionCreator {
     private let dispatcher: ArticleDispatcher
     private let disposeBag = DisposeBag()
 
-    init(dispatcher: ArticleDispatcher = .shared) {
+    init(
+        dispatcher: ArticleDispatcher = .shared,
+        apiSession: QiitaApiRepository = .shared
+    ) {
         self.dispatcher = dispatcher
         
         let _fetchArticles = PublishRelay<Void>()
@@ -34,7 +37,7 @@ final class ArticleActionCreator {
 
         _fetchArticles
             .flatMapLatest {
-                QiitaApiRepository.fetchQiitaArticles()
+                apiSession.fetchQiitaArticles()
                     .materialize()
             }
             .subscribe(onNext: { event in
@@ -50,7 +53,7 @@ final class ArticleActionCreator {
         _fetchArticlesBySearchWord
             .debounce(RxTimeInterval(1), scheduler: MainScheduler())
             .flatMap { searchWord in
-                QiitaApiRepository.fetchQiitaArticlesBySearchWord(searchWord: searchWord)
+                apiSession.fetchQiitaArticlesBySearchWord(searchWord: searchWord)
                     .materialize()
             }
             .subscribe(onNext: { event in
@@ -65,7 +68,7 @@ final class ArticleActionCreator {
         
         _fetchArticlesBySearchCategory
             .flatMapLatest {
-                QiitaApiRepository.fetchQiitaArticlesByCategory(category: $0)
+                apiSession.fetchQiitaArticlesByCategory(category: $0)
                     .materialize()
             }
             .subscribe(onNext: { event in

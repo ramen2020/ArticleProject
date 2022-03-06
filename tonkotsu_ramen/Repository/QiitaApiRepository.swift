@@ -3,19 +3,20 @@ import Moya
 import RxSwift
 
 protocol QiitaApiRepositoryProtocol {
-    static func fetchQiitaArticles() -> Observable<[Article]>
-    static func fetchQiitaArticlesBySearchWord(searchWord: String) -> Observable<[Article]>
-    static func fetchQiitaArticlesByCategory(category: String) -> Observable<[Article]>
+    func fetchQiitaArticles() -> Observable<[Article]>
+    func fetchQiitaArticlesBySearchWord(searchWord: String) -> Observable<[Article]>
+    func fetchQiitaArticlesByCategory(category: String) -> Observable<[Article]>
 }
 
 final class QiitaApiRepository {
-    private static let apiProvider = MoyaProvider<QiitaAPI>()
-    private static let disposeBag = DisposeBag()
+    static let shared = QiitaApiRepository()
+    private let apiProvider = MoyaProvider<QiitaAPI>()
+    private let disposeBag = DisposeBag()
 }
 
 extension QiitaApiRepository: QiitaApiRepositoryProtocol {
     
-    static func fetchQiitaArticles() -> Observable<[Article]> {
+    func fetchQiitaArticles() -> Observable<[Article]> {
         return apiProvider.rx.request(.all)
             .map { response in
                 switch response.statusCode {
@@ -42,7 +43,7 @@ extension QiitaApiRepository: QiitaApiRepositoryProtocol {
             }.asObservable()
     }
     
-    static func fetchQiitaArticlesBySearchWord(searchWord: String) -> Observable<[Article]> {
+    func fetchQiitaArticlesBySearchWord(searchWord: String) -> Observable<[Article]> {
         apiProvider.rx.request(.searchByText(searchWord: searchWord))
             .map { response in
                 switch response.statusCode {
@@ -70,7 +71,7 @@ extension QiitaApiRepository: QiitaApiRepositoryProtocol {
             .asObservable()
     }
 
-    static func fetchQiitaArticlesByCategory(category: String) -> Observable<[Article]> {
+    func fetchQiitaArticlesByCategory(category: String) -> Observable<[Article]> {
         apiProvider.rx.request(.searchByCategory(category: category))
             .map { response in
                 switch response.statusCode {

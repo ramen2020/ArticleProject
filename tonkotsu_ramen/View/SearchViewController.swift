@@ -12,7 +12,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchTextField: UITextField!
     
-    private var articleViewModel: ArticleViewModel = ArticleViewModel()
+    private var articleViewModel: ArticleViewModel = ArticleViewModel(flux: Flux.shared)
 
     var searchArticleCategoryButtons: [SearchArticleCategoryButton] = []
     var isSelectedCategoryButtonId: Int?

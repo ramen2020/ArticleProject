@@ -33,10 +33,10 @@ class ArticleViewModel: ArticleViewModelInputs, ArticleViewModelOutputs {
     
     private let disposeBag = DisposeBag()
     
-    init() {
+    init(flux: Flux) {
         
-        let articleStore = Flux.shared.articleStore
-        let articleActionCreator = Flux.shared.articleActionCreator
+        let articleStore = flux.articleStore
+        let articleActionCreator = flux.articleActionCreator
         
         // output
         let _articles = PublishRelay<[Article]>()
