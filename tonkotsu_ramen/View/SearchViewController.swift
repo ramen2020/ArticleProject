@@ -53,7 +53,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate {
         articleViewModel.featchArticles.onNext(Void())
         
         searchTextField.rx.text.orEmpty
-            .filter { $0.count >= 1 }
+            .filter { $0.count >= 3 }
             .bind(to: articleViewModel.input.searchWord)
             .disposed(by: disposeBag)
         

@@ -14,7 +14,7 @@ final class ArticleActionCreator {
 
     init(
         dispatcher: ArticleDispatcher = .shared,
-        apiSession: QiitaApiRepository = .shared
+        apiSession: QiitaApiRepositoryProtocol = QiitaApiRepository.shared
     ) {
         self.dispatcher = dispatcher
         
@@ -59,6 +59,7 @@ final class ArticleActionCreator {
             .subscribe(onNext: { event in
                 switch event {
                 case .next(let response):
+                    print("::::::: response: ", response)
                     dispatcher.articles.accept(response)
                 case .error(let error):
                     dispatcher.error.accept(error)
@@ -74,6 +75,7 @@ final class ArticleActionCreator {
             .subscribe(onNext: { event in
                 switch event {
                 case .next(let response):
+                    print("::::::: response: ", response)
                     dispatcher.articles.accept(response)
                 case .error(let error):
                     dispatcher.error.accept(error)

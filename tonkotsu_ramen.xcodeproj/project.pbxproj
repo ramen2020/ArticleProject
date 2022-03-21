@@ -36,6 +36,11 @@
 		668C30F02671A3DF002FD8AD /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668C30EF2671A3DF002FD8AD /* Article.swift */; };
 		668C30F22671A537002FD8AD /* QiitaApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 668C30F12671A537002FD8AD /* QiitaApi.swift */; };
 		66C0B66427D48D4500C1D7B4 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C0B66327D48D4500C1D7B4 /* R.generated.swift */; };
+		66C0B66727D49A3B00C1D7B4 /* FluxMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C0B66627D49A3B00C1D7B4 /* FluxMock.swift */; };
+		66C0B66927D49AF600C1D7B4 /* MockQiitaApiRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C0B66827D49AF600C1D7B4 /* MockQiitaApiRepository.swift */; };
+		66C0B66C27D49C8200C1D7B4 /* MockArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C0B66B27D49C8200C1D7B4 /* MockArticle.swift */; };
+		66C0B67027D4A4B500C1D7B4 /* ArticleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C0B66F27D4A4B500C1D7B4 /* ArticleViewModel.swift */; };
+		66D065A227D895AC0047817A /* ArticleStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D065A127D895AC0047817A /* ArticleStore.swift */; };
 		9AE4058E1F343D2AD16539FC /* Pods_tonkotsu_ramen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAFD36EF1CF90AFFA135DF00 /* Pods_tonkotsu_ramen.framework */; };
 		9C670FFC5CEE0A4F6E53DCA8 /* Pods_tonkotsu_ramen_tonkotsu_ramenUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04A18CA70E68C451EB568941 /* Pods_tonkotsu_ramen_tonkotsu_ramenUITests.framework */; };
 /* End PBXBuildFile section */
@@ -95,6 +100,11 @@
 		668C30EF2671A3DF002FD8AD /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		668C30F12671A537002FD8AD /* QiitaApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QiitaApi.swift; sourceTree = "<group>"; };
 		66C0B66327D48D4500C1D7B4 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		66C0B66627D49A3B00C1D7B4 /* FluxMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FluxMock.swift; sourceTree = "<group>"; };
+		66C0B66827D49AF600C1D7B4 /* MockQiitaApiRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockQiitaApiRepository.swift; sourceTree = "<group>"; };
+		66C0B66B27D49C8200C1D7B4 /* MockArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockArticle.swift; sourceTree = "<group>"; };
+		66C0B66F27D4A4B500C1D7B4 /* ArticleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewModel.swift; sourceTree = "<group>"; };
+		66D065A127D895AC0047817A /* ArticleStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleStore.swift; sourceTree = "<group>"; };
 		7755F99191303681329E969D /* Pods-tonkotsu_ramen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tonkotsu_ramen.release.xcconfig"; path = "Target Support Files/Pods-tonkotsu_ramen/Pods-tonkotsu_ramen.release.xcconfig"; sourceTree = "<group>"; };
 		7A91F55FC3F2A0785F45E8E1 /* Pods_tonkotsu_ramenTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tonkotsu_ramenTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0A0A4861D41EDFE156815E7 /* Pods-tonkotsu_ramen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tonkotsu_ramen.debug.xcconfig"; path = "Target Support Files/Pods-tonkotsu_ramen/Pods-tonkotsu_ramen.debug.xcconfig"; sourceTree = "<group>"; };
@@ -256,6 +266,8 @@
 		668C30D526719E52002FD8AD /* tonkotsu_ramenTests */ = {
 			isa = PBXGroup;
 			children = (
+				66C0B66527D499F500C1D7B4 /* Mock */,
+				66C0B66D27D4A43D00C1D7B4 /* Tests */,
 				668C30D626719E52002FD8AD /* tonkotsu_ramenTests.swift */,
 				668C30D826719E52002FD8AD /* Info.plist */,
 			);
@@ -269,6 +281,49 @@
 				668C30E326719E52002FD8AD /* Info.plist */,
 			);
 			path = tonkotsu_ramenUITests;
+			sourceTree = "<group>";
+		};
+		66C0B66527D499F500C1D7B4 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				66C0B66A27D49C4700C1D7B4 /* MockData */,
+				66C0B66627D49A3B00C1D7B4 /* FluxMock.swift */,
+				66C0B66827D49AF600C1D7B4 /* MockQiitaApiRepository.swift */,
+			);
+			path = Mock;
+			sourceTree = "<group>";
+		};
+		66C0B66A27D49C4700C1D7B4 /* MockData */ = {
+			isa = PBXGroup;
+			children = (
+				66C0B66B27D49C8200C1D7B4 /* MockArticle.swift */,
+			);
+			path = MockData;
+			sourceTree = "<group>";
+		};
+		66C0B66D27D4A43D00C1D7B4 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				66D065A027D895930047817A /* Flux */,
+				66C0B66E27D4A48800C1D7B4 /* ViewModel */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		66C0B66E27D4A48800C1D7B4 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				66C0B66F27D4A4B500C1D7B4 /* ArticleViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		66D065A027D895930047817A /* Flux */ = {
+			isa = PBXGroup;
+			children = (
+				66D065A127D895AC0047817A /* ArticleStore.swift */,
+			);
+			path = Flux;
 			sourceTree = "<group>";
 		};
 		DD609A3CCB60AB2DD2E6386F /* Pods */ = {
@@ -593,7 +648,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66C0B66727D49A3B00C1D7B4 /* FluxMock.swift in Sources */,
 				668C30D726719E52002FD8AD /* tonkotsu_ramenTests.swift in Sources */,
+				66C0B66C27D49C8200C1D7B4 /* MockArticle.swift in Sources */,
+				66C0B67027D4A4B500C1D7B4 /* ArticleViewModel.swift in Sources */,
+				66D065A227D895AC0047817A /* ArticleStore.swift in Sources */,
+				66C0B66927D49AF600C1D7B4 /* MockQiitaApiRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
