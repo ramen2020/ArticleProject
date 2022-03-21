@@ -6,6 +6,17 @@ RxSwift / MVVM / Flux / RXMoya
 kickstarterのMVVM + Flux + RxSwiftのアーキテクチャを踏襲したプロジェクト。
 API接続にはRxMoyaを使用します。
 
+## set up
+
+### １、pod install
+### ２、make R.generated.swift
+Generate files directly under the tonkotsu_ramen directory
+```
+⌘ + k
+⌘ + b
+```
+### ３、Pass through R.generated.swift path 
+Drag and drop the generated R.generated.swift file from finder directly under the tonkotsu_ramen directory in xcode.
 
 ## Architecture
 ![project_architecture](https://user-images.githubusercontent.com/74945210/150667625-3a4f516e-d1ea-48bd-9341-46a5eaa1c83e.png)
