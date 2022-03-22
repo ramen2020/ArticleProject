@@ -52,8 +52,8 @@ class ArticleViewModelTests: XCTestCase {
                 expect.fulfill()
             })
 
-        dependency.viewModel.searchWord.onNext("おけええええええええ")
-        wait(for: [expect], timeout: 3)
+        dependency.viewModel.fetchAriticles.onNext(Void())
+        wait(for: [expect], timeout: 0.1)
         disposable.dispose()
     }
 
