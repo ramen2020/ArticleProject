@@ -89,7 +89,7 @@ class ArticleViewModelTests: XCTestCase {
             Recorded.next(100, 1), // swiftの記事は1個
             Recorded.next(200, 1), // flutterの記事は１個
             Recorded.next(300, 0), // laravelは0個
-            Recorded.next(400, 0) // vuewは0個
+            Recorded.next(400, 0) // vueは0個
         ]
 
         scheduler.start()
