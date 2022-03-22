@@ -18,6 +18,7 @@ target 'tonkotsu_ramen' do
   target 'tonkotsu_ramenTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'RxTest'
   end
 
   target 'tonkotsu_ramenUITests' do
