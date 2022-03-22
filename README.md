@@ -49,6 +49,7 @@ Drag and drop the generated R.generated.swift file from finder directly under th
 - R.swift
 - SwiftSpinner
 - SwiftLint
+- RxTest
 
 ## Reference
 - iOSアプリ設計パターン
